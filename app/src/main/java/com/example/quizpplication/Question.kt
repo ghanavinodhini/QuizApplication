@@ -7,7 +7,7 @@ package com.example.quizpplication
                      val optionTwo:String? = null,
                      val optionThree:String? = null,
                      val optionFour:String? = null,
-                     val correctAnswer:Int? = 0)
+                     val correctAnswer:Int = 0)
 
 {
     fun getQuestions():ArrayList<Question>

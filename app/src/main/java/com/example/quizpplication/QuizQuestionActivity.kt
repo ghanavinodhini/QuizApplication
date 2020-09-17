@@ -24,7 +24,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
         Log.d("!!!","In questions activity")
 
-       // val questionsList = Constants.getQuestions()
 
         val qDisplay = Question()
 
@@ -32,7 +31,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
         Log.d("!!!","No.of questions: ${myQuestionsList!!.size}")
 
-        //Log.d("!!!","${questionsList.size}")
 
        setQuestion()
 
@@ -43,8 +41,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         optionThreeButton.setOnClickListener(this)
         optionFourButton.setOnClickListener(this)
 
-        //Adding Submit button
-        submitButton.setOnClickListener(this)
 
     }
 
@@ -92,35 +88,45 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     }
 
     override fun onClick(v: View?) {
+
         when(v?.id)
         {
             //Adding Buttons choice part
-            R.id.optionOneButton->{selectedOptionsView(optionOneButton,1)}
-            R.id.optionTwoButton->{selectedOptionsView(optionTwoButton,2)}
-            R.id.optionThreeButton->{selectedOptionsView(optionThreeButton,3)}
-            R.id.optionFourButton->{selectedOptionsView(optionFourButton,4)}
-            //Adding Submit button part
-            R.id.submitButton->{}
+            R.id.optionOneButton->{selectedOptionValidate(optionOneButton,1)}
+            R.id.optionTwoButton->{selectedOptionValidate(optionTwoButton,2)}
+            R.id.optionThreeButton->{selectedOptionValidate(optionThreeButton,3)}
+            R.id.optionFourButton->{selectedOptionValidate(optionFourButton,4)}
+
         }
     }
 
-    fun answerDisplay(answer:Int,drawableView:Int)
+    fun answerDisplay(answer:Int)
     {
-        when(answer)
-        {
-            1->{optionOneButton.setBackgroundColor(R.drawable.correct_button_color)}
-            2->{}
-        }
+        Log.d("!!!","Inside answerDisplay function")
+       when(answer){
+           1->optionOneButton.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+           2->optionTwoButton.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+           3->optionThreeButton.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+           4->optionFourButton.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+       }
+
+
     }
 
-    fun selectedOptionsView(selectedBtn:Button,selectedOptionNumber:Int)
+    fun selectedOptionValidate(selectedBtn:Button,selectedOptionNumber:Int)
     {
-        Log.d("!!!","Inside selectedOptionsView function")
+        val currentQuestionValidate = myQuestionsList!!.get(myCurrentQuestion-1)
         //Set all other options default
         defaultOptionsView()
         mySelectedOptionPosition = selectedOptionNumber
-        //to set selected border for selected button choice
-        selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.selected_option_border_bg)
+
+        if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
+            selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+        else{
+            selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
+            answerDisplay(currentQuestionValidate.correctAnswer)
+        }
+
     }
 }
 

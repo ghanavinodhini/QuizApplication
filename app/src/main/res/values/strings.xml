@@ -4,6 +4,7 @@
     <string name="start_button">START</string>
     <string name="welcome_textview">! WELCOME !</string>
     <string name="question_textview">What Is The Color Of This Fruit?</string>
+    <string name="progrssBar_text">0/5</string>
     <string name="submit_button">SUBMIT</string>
     <string name="next_button">NEXT</string>
 </resources>

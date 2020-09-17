@@ -1,86 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
-
-<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding = "20dp"
+    android:padding="20dp"
     tools:context=".QuizQuestionActivity">
 
-<TextView
-    android:id="@+id/questionTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:text="@string/question_textview"
-    android:textAlignment="center"
-    android:textColor="#1803DA"
-    android:textSize="20sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/questionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/question_textview"
+        android:textAlignment="center"
+        android:textColor="#1803DA"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<ImageView
-    android:id="@+id/qv_imageView"
-    android:layout_width="393dp"
-    android:layout_height="201dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:src="@drawable/appleimage"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
-
-<ProgressBar
-    android:id="@+id/progressBar"
-    style ="?android:attr/progressBarStyleHorizontal"
-    android:layout_width="333dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="12dp"
-    android:layout_marginEnd="12dp"
-    android:layout_weight="1"
-    android:indeterminate="false"
-    android:max="5"
-    android:progress="0"
-    app:layout_constraintEnd_toStartOf="@+id/progressTextView"
-    app:layout_constraintHorizontal_bias="0.125"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/qv_imageView" />
-
-<TextView
-    android:id="@+id/progressTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="13dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="90dp"
-    android:padding="5dp"
-    android:textAlignment="center"
-    android:textColor="#EE0043"
-    android:textSize="15sp"
-    app:layout_constraintBottom_toTopOf="@+id/optionOneButton"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@+id/progressBar"
-    app:layout_constraintTop_toBottomOf="@+id/qv_imageView"
-    app:layout_constraintVertical_bias="0.064"
-    tools:text="0/5" />
+    <ImageView
+        android:id="@+id/qv_imageView"
+        android:layout_width="395dp"
+        android:layout_height="202dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/appleimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
 
     <!--Adding Options buttons-->
 
-    <Button
-        android:id="@+id/optionOneButton"
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="333dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:indeterminate="false"
+        android:max="5"
+        android:progress="0"
+        app:layout_constraintEnd_toStartOf="@+id/progressTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qv_imageView" />
+
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="#EE0043"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498"
+        tools:text="@string/progrssBar_text" />
+
+    <Button
+        android:id="@+id/optionOneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/option_border_bg"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#0B0A0B"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/optionTwoButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <Button
+        android:id="@+id/optionTwoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/option_border_bg"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#0B0A0B"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/optionOneButton"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <Button
+        android:id="@+id/optionThreeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/option_border_bg"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#0B0A0B"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/optionFourButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionOneButton"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <Button
+        android:id="@+id/optionFourButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/option_border_bg"
@@ -88,87 +129,26 @@
         android:textAlignment="center"
         android:textColor="#0B0A0B"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintStart_toEndOf="@+id/optionThreeButton"
+        app:layout_constraintTop_toBottomOf="@+id/optionTwoButton"
+        app:layout_constraintVertical_bias="0.132" />
 
-    <Button
-        android:id = "@+id/optionTwoButton"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/next_floatButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/option_border_bg"
-        android:padding="10dp"
-        android:textAlignment="center"
-        android:textColor="#0B0A0B"
-        android:textSize="16sp"
+        android:layout_marginTop="196dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionOneButton"/>
-
-    <Button
-        android:id="@+id/optionThreeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/option_border_bg"
-        android:padding="10dp"
-        android:textAlignment="center"
-        android:textColor="#0B0A0B"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionTwoButton"/>
-
-    <Button
-        android:id = "@+id/optionFourButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/option_border_bg"
-        android:padding="10dp"
-        android:textAlignment="center"
-        android:textColor="#0B0A0B"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionThreeButton"/>
-
-    <Button
-    android:id="@+id/submitButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    android:text="@string/submit_button"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/optionFourButton"
-    app:layout_constraintVertical_bias="0.0" />
-
-<Button
-    android:id="@+id/nextButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    android:text="@string/next_button"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toEndOf="@+id/submitButton"
-    app:layout_constraintTop_toBottomOf="@+id/optionFourButton"
-    app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:srcCompat="@drawable/arrow_next" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
