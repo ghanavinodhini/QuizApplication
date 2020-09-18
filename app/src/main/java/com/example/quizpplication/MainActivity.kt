@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             else
             {
                 Log.d("!!!", "No name entered")
+                Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -13,8 +13,14 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 {
     //Each time this Activity starts, we start with question 1
     var myCurrentQuestion:Int = 1
+    //Create instance of Question as List variable to hold all questions details
     var myQuestionsList=ArrayList<Question>()
+    //Set variable to check if any options selected in question
     var mySelectedOptionPosition:Int = 0
+    //Set variable to hold correctly answered
+    var correctAnswered = 0
+    //Set variable to hold wrongly answered
+    var wrongAnswered = 0
 
    // var fruitsImage = findViewById<ImageView>(R.id.qv_imageView)
 
@@ -41,6 +47,24 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         optionThreeButton.setOnClickListener(this)
         optionFourButton.setOnClickListener(this)
 
+        //Adding next button click
+        next_floatButton.setOnClickListener{
+            Log.d("!!!","next button pressed!!")
+
+                Log.d("!!!","Entering incrementing question")
+                myCurrentQuestion++
+                displayNextQuestion(myCurrentQuestion)
+            }
+    }
+
+    fun displayNextQuestion(questionNumber:Int)
+    {
+        if(questionNumber <= myQuestionsList.size){
+            setQuestion()
+        }
+        else{
+            Log.d("!!!","Quiz completed!!")
+        }
 
     }
 
@@ -118,7 +142,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         val currentQuestionValidate = myQuestionsList!!.get(myCurrentQuestion-1)
         //Set all other options default
         defaultOptionsView()
-        mySelectedOptionPosition = selectedOptionNumber
+       //mySelectedOptionPosition = selectedOptionNumber
 
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
@@ -126,6 +150,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
+        mySelectedOptionPosition = selectedOptionNumber
 
     }
 }
