@@ -9,11 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".QuizQuestionActivity">
-        </activity>
-        <!-- Remove App bar at top in the mainactivity-->
-        <!-- Adjust components to move up when keyboard pop up-->
+        <activity android:name=".ResultsActivity"></activity>
+        <activity android:name=".QuizQuestionActivity"></activity> <!-- Remove App bar at top in the mainactivity -->
+        <!-- Adjust components to move up when keyboard pop up -->
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"

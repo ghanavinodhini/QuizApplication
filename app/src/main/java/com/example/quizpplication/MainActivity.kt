@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var nameEditText: EditText
+    lateinit var playerName:String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -29,13 +30,14 @@ class MainActivity : AppCompatActivity() {
             if(nameEditText.text.toString() != "")
             {
                 Log.d("!!!", "Hej ${nameEditText.text}")
+                playerName = nameEditText.text.toString()
                 startQuizQuestionActivity()
 
             }
             else
             {
                 Log.d("!!!", "No name entered")
-                Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -43,6 +45,8 @@ class MainActivity : AppCompatActivity() {
     fun startQuizQuestionActivity()
     {
         val intent = Intent(this,QuizQuestionActivity::class.java)
+
+        intent.putExtra("playerName",playerName)
         //Start Quiz Question activity
         startActivity(intent)
 

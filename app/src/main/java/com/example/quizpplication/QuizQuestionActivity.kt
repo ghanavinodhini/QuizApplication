@@ -1,17 +1,17 @@
 package com.example.quizpplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_question.*
 
 class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 {
-    //Each time this Activity starts, we start with question 1
+    //Each time this Activity starts first time, we start with question 1
     var myCurrentQuestion:Int = 1
     //Create instance of Question as List variable to hold all questions details
     var myQuestionsList=ArrayList<Question>()
@@ -21,6 +21,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     var correctAnswered = 0
     //Set variable to hold wrongly answered
     var wrongAnswered = 0
+    //Set score value
+    var score = 0
+    //Assign playername
+    lateinit var player:String
 
    // var fruitsImage = findViewById<ImageView>(R.id.qv_imageView)
 
@@ -30,7 +34,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
         Log.d("!!!","In questions activity")
 
-
+        player = getIntent().getStringExtra("playerName").toString()
         val qDisplay = Question()
 
          myQuestionsList = qDisplay.getQuestions()
@@ -54,7 +58,12 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 Log.d("!!!","Entering incrementing question")
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
+
             }
+        doneAll_floatButton.setOnClickListener{
+            Log.d("!!!","Done All button pressed!")
+            startResultsActivity()
+        }
     }
 
     fun displayNextQuestion(questionNumber:Int)
@@ -64,7 +73,9 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
         else{
             Log.d("!!!","Quiz completed!!")
+
         }
+
 
     }
 
@@ -73,6 +84,8 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
        // myCurrentQuestion = 1
         val currentQuestionDisplay = myQuestionsList!!.get(myCurrentQuestion-1)
         defaultOptionsView()
+        next_floatButton.hide()
+        doneAll_floatButton.hide()
 
         Log.d("!!!","Current Question details: ${currentQuestionDisplay.id},${currentQuestionDisplay.image}")
         progressBar.progress = myCurrentQuestion
@@ -111,9 +124,13 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
     }
 
-    override fun onClick(v: View?) {
+    override fun onClick(view: View?) {
+        if(myCurrentQuestion!=myQuestionsList.size)
+        next_floatButton.show()
+        else
+            doneAll_floatButton.show()
 
-        when(v?.id)
+        when(view?.id)
         {
             //Adding Buttons choice part
             R.id.optionOneButton->{selectedOptionValidate(optionOneButton,1)}
@@ -145,12 +162,31 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
        //mySelectedOptionPosition = selectedOptionNumber
 
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
-            selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.correct_button_color)
+        {
+            selectedBtn.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            correctAnswered++
+            score++
+        }
         else{
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
+            wrongAnswered++
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
         mySelectedOptionPosition = selectedOptionNumber
+
+    }
+
+    fun startResultsActivity()
+    {
+        val intent = Intent(this,ResultsActivity::class.java)
+
+        intent.putExtra("scoreValue",score)
+        intent.putExtra("noOfQuestions",myQuestionsList.size)
+        intent.putExtra("correctAnswered",correctAnswered)
+        intent.putExtra("wrongAnswered",wrongAnswered)
+        intent.putExtra("playerName",player)
+        //Start Results activity
+        startActivity(intent)
 
     }
 }
