@@ -34,8 +34,8 @@ class ResultsActivity : AppCompatActivity() {
 
         Log.d("!!!","Score value: $score")
 
-       // scoreTextView.setText("Score : " + getIntent().getIntExtra("scoreValue",0))
 
+        //Pass values to strings.xml file
         scoreTextView.text = getString(R.string.score_textview,score.toString())
         totalQuestionsTextView.text = getString(R.string.totalQuestions_textview,totalQuestions.toString())
         correctAnsweredTextView.text = getString(R.string.correctlyAnswered_textview,correctAnswers.toString())
