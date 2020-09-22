@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_question.*
 
@@ -24,8 +23,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     var wrongAnswered = 0
     //Set score value
     var score = 0
+    //Set flag variable to deactivate buttons after click
+    var optionButtonClickFlag = false
     //Create a varibale to hold player Name
-    lateinit var player:String
+    private var playerName:String?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         Log.d("!!!","In questions activity")
 
         //Assign the value of player Name to variable
-        player = getIntent().getStringExtra("playerName").toString()
+        playerName = getIntent().getStringExtra("playerName").toString()
         //Create instance of class Question to access its members and functions
         val qDisplay = Question()
         //Retreive all list of questions
@@ -57,6 +58,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             Log.d("!!!","next button pressed!!")
 
                 Log.d("!!!","Entering incrementing question")
+                optionButtonClickFlag = false
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
 
@@ -124,17 +126,23 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         options.add(2,optionThreeButton)
         options.add(3,optionFourButton)
 
+
         //set default values for unselected button options
         for(opt in options)
         {
             //To set option border by default for unselected button choices
             opt.background = ContextCompat.getDrawable(this,R.drawable.option_border_bg)
-
+            //Enable and Disable buttons based on flag value
+            if(!optionButtonClickFlag)
+                opt.isEnabled = true
+            else opt.isEnabled = false
         }
 
     }
 
     override fun onClick(view: View?) {
+        //Set button click flag to true on Click
+        optionButtonClickFlag = true
         //Check if current Question is not last question and display next button
         if(myCurrentQuestion!=myQuestionsList.size)
         next_floatButton.show()
@@ -154,7 +162,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     }
 
 
-
+    //Validate user selected option
     fun selectedOptionValidate(selectedBtn:Button,selectedOptionNumber:Int)
     {
         val currentQuestionValidate = myQuestionsList!!.get(myCurrentQuestion-1)
@@ -169,13 +177,13 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
         {
             selectedBtn.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
-            correctAnswered+=1
-            score+=1
+                correctAnswered += 1
+                score += 1
         }
         else{
             //Display button in Red Color if user selected option is wrong
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
-            wrongAnswered+=1
+                wrongAnswered+=1
             //Display correct answer
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
@@ -204,7 +212,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         intent.putExtra("noOfQuestions",myQuestionsList.size)
         intent.putExtra("correctAnswered",correctAnswered)
         intent.putExtra("wrongAnswered",wrongAnswered)
-        intent.putExtra("playerName",player)
+        intent.putExtra("playerName",playerName)
         //Start Results activity
         startActivity(intent)
 

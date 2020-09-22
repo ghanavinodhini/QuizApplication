@@ -10,10 +10,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    //Create a  variable to hold playerName entered by user
     lateinit var nameEditText: EditText
-    //Create a  variable of Type String to display in Results Activity
-    lateinit var playerName:String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             if(nameEditText.text.toString() != "")
             {
                 Log.d("!!!", "Hej ${nameEditText.text}")
-                playerName = nameEditText.text.toString()
+               //Call startQuizQuestionActivity function
                 startQuizQuestionActivity()
 
             }
@@ -46,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         //Create intent to pass communicate with QuizQuestion Activity
         val intent = Intent(this,QuizQuestionActivity::class.java)
         //Pass playerName data to QuizQuestion Activity
-        intent.putExtra("playerName",playerName)
+        intent.putExtra("playerName",nameEditText.text.toString())
         //Start Quiz Question activity
         startActivity(intent)
 
