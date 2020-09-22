@@ -129,7 +129,9 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         {
             //To set option border by default for unselected button choices
             opt.background = ContextCompat.getDrawable(this,R.drawable.option_border_bg)
+
         }
+
     }
 
     override fun onClick(view: View?) {
@@ -142,7 +144,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
         when(view?.id)
         {
-            //Validate each button on button click
+            //Validate each option button on button click
             R.id.optionOneButton->{selectedOptionValidate(optionOneButton,1)}
             R.id.optionTwoButton->{selectedOptionValidate(optionTwoButton,2)}
             R.id.optionThreeButton->{selectedOptionValidate(optionThreeButton,3)}
