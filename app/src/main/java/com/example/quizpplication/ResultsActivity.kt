@@ -1,9 +1,12 @@
 package com.example.quizpplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_results.*
 
 class ResultsActivity : AppCompatActivity() {
@@ -41,5 +44,39 @@ class ResultsActivity : AppCompatActivity() {
         correctAnsweredTextView.text = getString(R.string.correctlyAnswered_textview,correctAnswers.toString())
         wrongAnsweredTextView.text = getString(R.string.wronglyAnswered_textview,wrongAnswers.toString())
         playerNameTextView.text = getString(R.string.playername_textview,playerName)
+
+        replay_button.setOnClickListener{
+            restartQuiz()
+        }
+
+        quitButton.setOnClickListener{
+            displayAlert()
+        }
     }
+    fun restartQuiz()
+    {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun displayAlert()
+    {
+        val builder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
+        builder.setTitle("Exit")
+        builder.setMessage("Are You Sure To Quit?")
+        builder.setPositiveButton("YES")
+        {
+                dialog,which->finish()
+        }
+        builder.setNegativeButton("NO")
+        {
+            dialog,which->
+            Toast.makeText(this,"You clicked NO button",Toast.LENGTH_LONG).show()
+        }
+
+        val dialog:AlertDialog = builder.create()
+        dialog.show()
+    }
+
 }

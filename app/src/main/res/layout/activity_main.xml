@@ -29,8 +29,8 @@
 
     <EditText
         android:id="@+id/editTexPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="348dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/edittext_round"
@@ -40,6 +40,8 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"
+        android:textColorHint="#8C8989"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

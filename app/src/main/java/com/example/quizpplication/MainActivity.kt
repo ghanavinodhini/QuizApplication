@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("playerName",nameEditText.text.toString())
         //Start Quiz Question activity
         startActivity(intent)
+        finish()
 
     }
 }

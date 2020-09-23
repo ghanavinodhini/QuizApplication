@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp"
+    android:padding="10dp"
+    android:background="@drawable/flowers_background"
     tools:context=".QuizQuestionActivity">
 
     <TextView
@@ -156,10 +157,10 @@
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/doneAll_floatButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/arrow_next" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -175,5 +176,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressTextView"
         app:srcCompat="@drawable/doneall_outline" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

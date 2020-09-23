@@ -2,7 +2,7 @@ package com.example.quizpplication
 
 import android.widget.ImageView
 
-//this data class contains only data information and no functions
+//this class contains Questions data
  class Question (val id:Int? = null,
                     val image_grayscale:Int?=null,
                      val image:Int? = null,
@@ -13,9 +13,9 @@ import android.widget.ImageView
                      val correctAnswer:Int = 0)
 
 {
-    fun getQuestions():ArrayList<Question>
+    fun getQuestions():MutableList<Question>
     {
-        val questionsList = ArrayList<Question>()
+        val questionsList = mutableListOf<Question>()
 
         val que1 = Question(1,
                             R.drawable.appleimage_grayscale,

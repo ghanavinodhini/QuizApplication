@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ResultsActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="350dp"
-        app:layout_constraintGuide_percent="0.50" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -66,7 +66,7 @@
 
     <TextView
         android:id="@+id/score_textView"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/score_textview"
         android:textAlignment="center"
@@ -97,26 +97,25 @@
         android:id="@+id/correctlyAnswered_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/correctlyAnswered_textview"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toBottomOf="@+id/correctSignImageView" />
 
     <TextView
         android:id="@+id/wronglyAnswered_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="52dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/wronglyAnswered_textview"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toEndOf="@+id/correctlyAnswered_textView"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/quitButton"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/trophyImageView"
@@ -135,10 +134,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/correctlyAnswered_textView"
         app:layout_constraintEnd_toStartOf="@+id/wrongSignImageView"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView"
         app:srcCompat="@drawable/correct_sign" />
@@ -148,10 +145,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="76dp"
         app:layout_constraintBottom_toTopOf="@+id/wronglyAnswered_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/wrong_sign" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/replay_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/quitButton"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_replay_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/quitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/wrong_sign" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

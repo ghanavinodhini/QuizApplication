@@ -14,7 +14,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Each time this Activity starts first time, we start with question 1
     var myCurrentQuestion:Int = 1
     //Create instance of class Question as List variable to hold all questions details
-    var myQuestionsList=ArrayList<Question>()
+    var myQuestionsList= mutableListOf<Question>()
     //Set variable to check if any options selected in question
     var mySelectedOptionPosition:Int = 0
     //Set variable to hold correctly answered
@@ -56,12 +56,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Set OnClickListener for 'next' button
         next_floatButton.setOnClickListener{
             Log.d("!!!","next button pressed!!")
-
                 Log.d("!!!","Entering incrementing question")
                 optionButtonClickFlag = false
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
-
             }
         //Set OnClickListener for 'doneAll' button
         doneAll_floatButton.setOnClickListener{
@@ -79,14 +77,12 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
         else{
             Log.d("!!!","Quiz completed!!")
-
         }
     }
 
+    //Display Questions Details
     fun setQuestion()
     {
-       // myCurrentQuestion = 1
-
         //Get current Question details from questionsList
         val currentQuestionDisplay = myQuestionsList!!.get(myCurrentQuestion-1)
         //Set default border for option buttons
@@ -102,11 +98,8 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         progressTextView.text = "$myCurrentQuestion" + "/" + progressBar.max
 
 
-        //Set grayscale image for current question
-       //currentQuestionDisplay.image?.let { qv_imageView.setImageResource(it) }
+        //Display grayscale image for current question
         currentQuestionDisplay.image_grayscale?.let { qv_imageView.setImageResource(it) }
-
-
 
         //Display text in all option buttons
         optionOneButton.text = currentQuestionDisplay.optionOne
@@ -126,8 +119,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         options.add(2,optionThreeButton)
         options.add(3,optionFourButton)
 
-
-        //set default values for unselected button options
         for(opt in options)
         {
             //To set option border by default for unselected button choices
@@ -137,10 +128,11 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 opt.isEnabled = true
             else opt.isEnabled = false
         }
-
     }
 
-    override fun onClick(view: View?) {
+    //Implement option buttons onClick functionality
+    override fun onClick(view: View?)
+    {
         //Set button click flag to true on Click
         optionButtonClickFlag = true
         //Check if current Question is not last question and display next button
@@ -184,13 +176,13 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             //Display button in Red Color if user selected option is wrong
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
                 wrongAnswered+=1
-            //Display correct answer
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
         //mySelectedOptionPosition = selectedOptionNumber
 
     }
 
+    //Display correct answwer
     fun answerDisplay(answer:Int)
     {
         Log.d("!!!","Inside answerDisplay function")
@@ -215,7 +207,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         intent.putExtra("playerName",playerName)
         //Start Results activity
         startActivity(intent)
-
+        finish()
     }
 }
 
