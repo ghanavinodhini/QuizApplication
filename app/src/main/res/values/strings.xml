@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">Guess Colors Quizapplication</string>
+    <string name="app_name">Guess Colors Quiz</string>
     <string name="edit_nametext">Enter Your Name</string>
     <string name="start_button">START</string>
     <string name="welcome_textview">! WELCOME !</string>
     <string name="question_textview">What Is The Color Of This Fruit?</string>
     <string name="progrssBar_text">0/5</string>
+    <string name="imageDescription">Fruits Image</string>
     <string name="submit_button">SUBMIT</string>
     <string name="next_button">NEXT</string>
     <string name="reults_textview">RESULTS BOARD</string>
-    <string name="playername_textview">Hi %1$s !!</string>
+    <string name="playername_textview">Congrats %1$s !!</string>
     <string name="score_textview">YOUR SCORE: %1$s</string>
     <string name="totalQuestions_textview">TOTAL NO. OF QUESTIONS: %1$s </string>
     <string name="correctlyAnswered_textview">CORRECT : %1$s </string>

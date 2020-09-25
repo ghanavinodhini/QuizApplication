@@ -53,6 +53,7 @@ class ResultsActivity : AppCompatActivity() {
             displayAlert()
         }
     }
+    //Restart MainActivity on Replay
     fun restartQuiz()
     {
         val intent = Intent(this,MainActivity::class.java)
@@ -60,23 +61,24 @@ class ResultsActivity : AppCompatActivity() {
         finish()
     }
 
+    //Display Alert Dialog for quit app
     fun displayAlert()
     {
-        val builder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
-        builder.setTitle("Exit")
-        builder.setMessage("Are You Sure To Quit?")
-        builder.setPositiveButton("YES")
+        val dialogBuilder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
+        dialogBuilder.setTitle("Exit")
+                    .setMessage("Are You Sure To Quit?")
+                    .setPositiveButton("YES")
         {
                 dialog,which->finish()
         }
-        builder.setNegativeButton("NO")
+        dialogBuilder.setNegativeButton("NO")
         {
             dialog,which->
             Toast.makeText(this,"You clicked NO button",Toast.LENGTH_LONG).show()
         }
 
-        val dialog:AlertDialog = builder.create()
-        dialog.show()
+        val alert = dialogBuilder.create()
+        alert.show()
     }
 
 }
