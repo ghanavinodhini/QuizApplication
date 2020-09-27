@@ -5,7 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <!--Define alert dialog theme color-->
     <color name="exitAlertColor">#2156F3</color>
-    <!--Define App text color-->
+    <!--Define colors used in App -->
     <color name="colorText">#6228C8</color>
     <color name="colorHint">#8C8989</color>
     <color name="welcomeColorText">#EA0955</color>

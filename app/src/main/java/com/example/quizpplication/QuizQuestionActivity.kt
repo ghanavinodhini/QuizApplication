@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_question.*
 
@@ -27,7 +28,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     var optionButtonClickFlag = false
     //Create a varibale to hold player Name
     private var playerName:String?=null
-
+    var backCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -207,7 +208,24 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         intent.putExtra("playerName",playerName)
         //Start Results activity
         startActivity(intent)
+        //Finish Results Activity
         finish()
+    }
+
+    //Back navigation button handling
+    override fun onBackPressed() {
+        backCount++
+
+        if(backCount == 1)
+        {
+            Log.d("!!!","pressed once")
+            Toast.makeText(this,"Press again to exit", Toast.LENGTH_LONG).show()
+        }
+        if(backCount == 2) {
+            Log.d("!!!", "Back button pressed twice")
+            super.onBackPressed()
+            return
+        }
     }
 }
 

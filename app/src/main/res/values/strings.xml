@@ -2,6 +2,7 @@
     <string name="app_name">Guess Colors Quiz</string>
     <string name="edit_nametext">Enter Your Name</string>
     <string name="start_button">START</string>
+    <string name="splash_text">!!QUIZ!!</string>
     <string name="welcome_textview">! WELCOME !</string>
     <string name="question_textview">What Is The Color Of This Fruit?</string>
     <string name="progrssBar_text">0/5</string>
