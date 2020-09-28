@@ -15,6 +15,7 @@ class ResultsActivity : AppCompatActivity() {
     lateinit var totalQuestionsTextView: TextView
     lateinit var correctAnsweredTextView: TextView
     lateinit var wrongAnsweredTextView: TextView
+    lateinit var skippedTextView:TextView
     lateinit var playerNameTextView: TextView
 
 
@@ -27,11 +28,13 @@ class ResultsActivity : AppCompatActivity() {
         totalQuestionsTextView = findViewById(R.id.totalQuestions_textView)
         correctAnsweredTextView = findViewById(R.id.correctlyAnswered_textView)
         wrongAnsweredTextView = findViewById(R.id.wronglyAnswered_textView)
+        skippedTextView = findViewById(R.id.skipped_textView)
         playerNameTextView = findViewById(R.id.playerName_textView)
 
         val score = getIntent().getIntExtra("scoreValue",0)
         val correctAnswers = getIntent().getIntExtra("correctAnswered",0)
         val wrongAnswers = getIntent().getIntExtra("wrongAnswered",0)
+        val skipQuestions = getIntent().getIntExtra("skipped",0)
         val totalQuestions = getIntent().getIntExtra("noOfQuestions",0)
         val playerName = getIntent().getStringExtra("playerName")
 
@@ -43,6 +46,7 @@ class ResultsActivity : AppCompatActivity() {
         totalQuestionsTextView.text = getString(R.string.totalQuestions_textview,totalQuestions.toString())
         correctAnsweredTextView.text = getString(R.string.correctlyAnswered_textview,correctAnswers.toString())
         wrongAnsweredTextView.text = getString(R.string.wronglyAnswered_textview,wrongAnswers.toString())
+        skippedTextView.text = getString(R.string.skipped_textview,skipQuestions.toString())
         playerNameTextView.text = getString(R.string.playername_textview,playerName)
 
         replay_button.setOnClickListener{

@@ -13,7 +13,8 @@
     <string name="playername_textview">Congrats %1$s !!</string>
     <string name="score_textview">YOUR SCORE: %1$s</string>
     <string name="totalQuestions_textview">TOTAL NO. OF QUESTIONS: %1$s </string>
-    <string name="correctlyAnswered_textview">CORRECT : %1$s </string>
-    <string name="wronglyAnswered_textview">WRONG : %1$s </string>
+    <string name="correctlyAnswered_textview">CORRECT:%1$s </string>
+    <string name="wronglyAnswered_textview">WRONG:%1$s </string>
+    <string name="skipped_textview">SKIPPED:%1$s</string>
     <string name="quit_button">QUIT</string>
 </resources>

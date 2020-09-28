@@ -3,6 +3,7 @@ package com.example.quizpplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -22,13 +23,18 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     var correctAnswered = 0
     //Set variable to hold wrongly answered
     var wrongAnswered = 0
+    //Set variable to hold skipped answers
+    var skippedQuestions = 0
     //Set score value
     var score = 0
     //Set flag variable to deactivate buttons after click
     var optionButtonClickFlag = false
     //Create a varibale to hold player Name
-    private var playerName:String?=null
+    var playerName:String?=null
+    //Create a variable to hold count for back button press
     var backCount = 0
+    //Create timer variable
+    lateinit var timer:CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +54,11 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Set first question
         setQuestion()
 
+        //Timer Implementation
+        //Create variable for timer
+         timer = MyCounter(10000,1000)
+        timer.start()
+
         //Set OnclickListener event for all 'option' buttons
         optionOneButton.setOnClickListener(this)
         optionTwoButton.setOnClickListener(this)
@@ -58,6 +69,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         next_floatButton.setOnClickListener{
             Log.d("!!!","next button pressed!!")
                 Log.d("!!!","Entering incrementing question")
+                timer.start()
                 optionButtonClickFlag = false
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
@@ -67,6 +79,35 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             Log.d("!!!","Done All button pressed!")
             //Start Results Activity on doneAll button click
             startResultsActivity()
+        }
+    }
+
+    //Timer class
+    inner class MyCounter(millisInFuture:Long,countDownInterval:Long):CountDownTimer(millisInFuture, countDownInterval)
+    {
+        override fun onTick(millisUntilFinished: Long) {
+            timerTextView.text = (millisUntilFinished/1000).toString()
+        }
+
+        override fun onFinish() {
+            timerTextView.text="0"
+            //Check if current Question is not last question and display next button
+            if(myCurrentQuestion!=myQuestionsList.size)
+                next_floatButton.show()
+            else
+            //Display doneAll button in last question
+                doneAll_floatButton.show()
+            //Set option button click to false
+            optionButtonClickFlag = true
+            //Disable all option buttons
+            defaultOptionsView()
+            //Display correct Answer when timer finishes
+            answerDisplay(myQuestionsList.get(myCurrentQuestion-1).correctAnswer)
+            //Display original image for current question
+            myQuestionsList.get(myCurrentQuestion-1).image?.let { qv_imageView.setImageResource(it) }
+            //Increment skipped Questions
+            skippedQuestions+=1
+            Log.d("!!!","Skipped: $skippedQuestions")
         }
     }
 
@@ -134,6 +175,8 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Implement option buttons onClick functionality
     override fun onClick(view: View?)
     {
+        //Cancel timer on option button click
+        timer.cancel()
         //Set button click flag to true on Click
         optionButtonClickFlag = true
         //Check if current Question is not last question and display next button
@@ -173,12 +216,13 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 correctAnswered += 1
                 score += 1
         }
-        else{
+        else {
             //Display button in Red Color if user selected option is wrong
             selectedBtn.background = ContextCompat.getDrawable(this,R.drawable.wrong_buton_color)
                 wrongAnswered+=1
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
+
         //mySelectedOptionPosition = selectedOptionNumber
 
     }
@@ -205,6 +249,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         intent.putExtra("noOfQuestions",myQuestionsList.size)
         intent.putExtra("correctAnswered",correctAnswered)
         intent.putExtra("wrongAnswered",wrongAnswered)
+        intent.putExtra("skipped",skippedQuestions)
         intent.putExtra("playerName",playerName)
         //Start Results activity
         startActivity(intent)

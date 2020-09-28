@@ -177,5 +177,29 @@
         app:layout_constraintTop_toBottomOf="@+id/progressTextView"
         app:srcCompat="@drawable/doneall_outline" />
 
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="153dp"
+        android:layout_height="52dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionFourButton" />
+
+    <TextView
+        android:id="@+id/timerLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timer"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timerTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionThreeButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

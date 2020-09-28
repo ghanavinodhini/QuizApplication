@@ -19,23 +19,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ResultsActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".QuizQuestionActivity"
-            android:screenOrientation="portrait"></activity>
-
-        <!-- Remove App bar at top in the mainactivity -->
+            android:screenOrientation="portrait" /> <!-- Remove App bar at top in the mainactivity -->
         <!-- Adjust components to move up when keyboard pop up -->
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
