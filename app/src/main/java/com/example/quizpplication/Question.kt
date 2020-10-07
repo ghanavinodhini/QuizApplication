@@ -73,4 +73,63 @@ import android.widget.ImageView
 
         return questionsList
     }
+
+    fun getFlowersQuestion() : MutableList<Question>
+    {
+        val flowersQuestionList = mutableListOf<Question>()
+
+        val que1 = Question(1,
+                            R.drawable.rose_grayscale,
+                            R.drawable.roseimage,
+                            "Blue",
+                            "Green",
+                            "Red",
+                            "Yellow",
+                            3)
+
+        val que2 = Question(2,
+                            R.drawable.lotus_grayscale,
+                            R.drawable.lotusimage,
+                            "Green",
+                            "Red",
+                            "Pink",
+                            "Yellow",
+                            3)
+
+
+        val que3 = Question(3,
+                            R.drawable.sunflower_grayscale,
+                            R.drawable.sunflowerimage,
+                            "Purple",
+                            "Black",
+                            "Orange",
+                            "Yellow",
+                            4)
+
+
+        val que4 = Question(4,
+                            R.drawable.tulip_grayscale,
+                            R.drawable.tulipimage,
+                            "Purple",
+                            "Maroon",
+                            "Brown",
+                            "Pink",
+                            1)
+
+
+        val que5 = Question(5,
+                            R.drawable.daisy_grayscale,
+                            R.drawable.daisyimage,
+                            "Blue",
+                            "White",
+                            "Pink",
+                            "Yellow",
+                            2)
+        flowersQuestionList.add(que1)
+        flowersQuestionList.add(que2)
+        flowersQuestionList.add(que3)
+        flowersQuestionList.add(que4)
+        flowersQuestionList.add(que5)
+        return flowersQuestionList
+    }
 }

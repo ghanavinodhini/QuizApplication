@@ -3,6 +3,7 @@ package com.example.quizpplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
@@ -26,20 +27,27 @@ class MainActivity : AppCompatActivity() {
             //Check if value is entered in Text box
             if(nameEditText.text.toString() != "")
             {
-                Log.d("!!!", "Hej ${nameEditText.text}")
+             /*   Log.d("!!!", "Hej ${nameEditText.text}")
                //Call startQuizQuestionActivity function
-                startQuizQuestionActivity()
+                startQuizQuestionActivity()*/
+
+                DataManager.playerName = nameEditText.text.toString()
+                Log.d("!!!","PlayerName: ${DataManager.playerName}")
+
+                startCategoriesActivity()
 
             }
             else
             {
+                DataManager.playerName = ""
                 Log.d("!!!", "No name entered")
+                Log.d("!!!","PLayerName:${DataManager.playerName}")
                 Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    fun startQuizQuestionActivity()
+   /* fun startQuizQuestionActivity()
     {
         //Create intent to pass communicate with QuizQuestion Activity
         val intent = Intent(this,QuizQuestionActivity::class.java)
@@ -48,6 +56,13 @@ class MainActivity : AppCompatActivity() {
         //Start Quiz Question activity
         startActivity(intent)
         //Finish Quiz Question Activity
+        finish()
+    }*/
+
+    fun startCategoriesActivity()
+    {
+        val intent = Intent(this,CategoriesActivity::class.java)
+        startActivity(intent)
         finish()
     }
 }

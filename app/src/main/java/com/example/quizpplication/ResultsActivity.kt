@@ -17,7 +17,8 @@ class ResultsActivity : AppCompatActivity() {
     lateinit var wrongAnsweredTextView: TextView
     lateinit var skippedTextView:TextView
     lateinit var playerNameTextView: TextView
-
+    //Create a variable to hold count for back button press
+    var navBackCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,7 @@ class ResultsActivity : AppCompatActivity() {
         val wrongAnswers = getIntent().getIntExtra("wrongAnswered",0)
         val skipQuestions = getIntent().getIntExtra("skipped",0)
         val totalQuestions = getIntent().getIntExtra("noOfQuestions",0)
-        val playerName = getIntent().getStringExtra("playerName")
+        val playerName = DataManager.playerName
 
         Log.d("!!!","Score value: $score")
 
@@ -47,7 +48,8 @@ class ResultsActivity : AppCompatActivity() {
         correctAnsweredTextView.text = getString(R.string.correctlyAnswered_textview,correctAnswers.toString())
         wrongAnsweredTextView.text = getString(R.string.wronglyAnswered_textview,wrongAnswers.toString())
         skippedTextView.text = getString(R.string.skipped_textview,skipQuestions.toString())
-        playerNameTextView.text = getString(R.string.playername_textview,playerName)
+       playerNameTextView.text = getString(R.string.playername_textview,playerName)
+
 
         replay_button.setOnClickListener{
             restartQuiz()
@@ -83,6 +85,25 @@ class ResultsActivity : AppCompatActivity() {
 
         val alert = dialogBuilder.create()
         alert.show()
+    }
+
+    //Back navigation button handling
+    override fun onBackPressed()
+    {
+        navBackCount++
+
+        if (navBackCount == 1)
+        {
+            Log.d("!!!", "pressed once")
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_LONG).show()
+        }
+        if (navBackCount == 2)
+        {
+            Log.d("!!!", "Back button pressed twice")
+            super.onBackPressed()
+            return
+        }
+
     }
 
 }
