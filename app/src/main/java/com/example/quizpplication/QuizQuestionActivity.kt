@@ -3,6 +3,7 @@ package com.example.quizpplication
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -53,7 +54,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         {
             questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
             //questionTextView.setText(R.string.question_textview)
-            myQuestionsList = qDisplay.getQuestions()
+            myQuestionsList = qDisplay.getFruitsQuestions()
         }
         if(categoryName == "Flowers")
         {
@@ -105,7 +106,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
 
         override fun onFinish() {
-            displayTimeUpMessage()
+            displayTimeUpMessage("TIMEUP",500)
             timerCount = 0
             timerTextView.text = timerCount.toString()
 
@@ -130,9 +131,18 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             Log.d("!!!", "Skipped: $skippedQuestions")
         }
     }
-    fun displayTimeUpMessage()
+    //Display Toast Tmeup message for half second
+    fun displayTimeUpMessage( text:String,  duration:Long)
     {
-        Toast.makeText(this, "TIME UP", Toast.LENGTH_LONG).show()
+
+            val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
+            toast.show()
+            val handler = Handler()
+            handler.postDelayed(object:Runnable {
+                 override fun run() {
+                    toast.cancel()
+                }
+            }, duration)
     }
 
     //Diplay next question if question number lessthan/equalto questionsList
@@ -158,10 +168,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Hide doneAll Button
         doneAll_floatButton.hide()
 
-        Log.d(
-            "!!!",
-            "Current Question details: ${currentQuestionDisplay.id},${currentQuestionDisplay.image}"
-        )
         //Set progress Bar progress to currentQuestion value
         progressBar.progress = myCurrentQuestion
         progressTextView.text = "$myCurrentQuestion" + "/" + progressBar.max
@@ -307,13 +313,14 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         finish()
     }
 
-    //Back navigation button handling
-    override fun onBackPressed() {
-
+    //Back navigation button handling to Categories Activity
+    override fun onBackPressed()
+    {
         val intent = Intent(this,CategoriesActivity::class.java)
         startActivity(intent)
+        //Finish Question Activity
         finish()
-        }
+    }
 
 }
 

@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_categories.*
 class CategoriesActivity : AppCompatActivity() {
 
     lateinit var recyclerView: RecyclerView
+    val cardPadding = 30
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class CategoriesActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         //Call function for spacing between cards
-        recyclerView.addItemDecoration(cardViewItemDecoration(30))
+        recyclerView.addItemDecoration(cardViewItemDecoration(cardPadding))
 
         recyclerView.adapter = CategoriesRecyclerAdapter(this, DataManager.categories)
 
@@ -62,12 +63,13 @@ fun showHelp()
         .setPositiveButton("OK")
         {
                 dialog,which->
-            Toast.makeText(this,"You closed help window", Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"You closed help window", Toast.LENGTH_SHORT).show()
         }
     val alert = dialogBuilder.create()
     alert.show()
 }
-    override fun onResume() {
+    override fun onResume()
+    {
         super.onResume()
         recyclerView.adapter?.notifyDataSetChanged()
 
@@ -78,8 +80,8 @@ fun showHelp()
             outRect: Rect,
             view: View,
             parent: RecyclerView,
-            state: RecyclerView.State
-        ) {
+            state: RecyclerView.State)
+        {
             super.getItemOffsets(outRect, view, parent, state)
             outRect.top = padding
         }

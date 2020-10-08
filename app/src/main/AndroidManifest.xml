@@ -9,29 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoriesActivity"></activity>
+        <!-- Remove App bar at top in the Splashactivity -->
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ResultsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".QuizQuestionActivity"
-            android:screenOrientation="portrait" /> <!-- Remove App bar at top in the mainactivity -->
+        <!-- Remove App bar at top in the mainactivity -->
         <!-- Adjust components to move up when keyboard pop up -->
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CategoriesActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/category_title"/>
+        <activity
+            android:name=".QuizQuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResultsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

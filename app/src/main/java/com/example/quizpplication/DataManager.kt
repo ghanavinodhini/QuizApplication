@@ -1,17 +1,16 @@
 package com.example.quizpplication
 
-import android.util.Log
-import android.widget.Toast
-
-//singleton
 object DataManager {
-
-    //Create variable for PLayername
     lateinit var playerName:String
-    var helpMessage =
-        "This quiz application contains categories to choose. On selecting a category displays questions with colourless image to find the color within given time. " +
-                "Choices will be displayed to select the correct colour. The original image will be displayed after user selection option or timeout. The next arrow button navigates to next question."+
-                "The results page displays the score details. Player can restart or quit the quiz from Results screen."
+    val helpMessage =
+        "How to Play?\n" +
+                "Player chooses a Category.\n"+
+                "Colourless image will be displayed with options to find the image colour within 10 seconds.\n" +
+                "Countdown timer starts immediately in all questions.\n"+
+                "When player clicks Next arrow button, next question will be displayed.\n"+
+                "Player can navigate back to Categories page from any question.\n"+
+                "Results page displays the score details.\n"+
+                "Player can restart or quit the quiz application from Results screen."
     val categories = mutableListOf<Category>()
 
     init {

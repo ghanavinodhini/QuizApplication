@@ -1,7 +1,5 @@
 package com.example.quizpplication
 
-import android.widget.ImageView
-
 //this class contains Questions data
  class Question (val id:Int? = null,
                     val image_grayscale:Int?=null,
@@ -13,9 +11,9 @@ import android.widget.ImageView
                      val correctAnswer:Int = 0)
 
 {
-    fun getQuestions():MutableList<Question>
+    fun getFruitsQuestions():MutableList<Question>
     {
-        val questionsList = mutableListOf<Question>()
+        val fruitsQuestionsList = mutableListOf<Question>()
 
         val que1 = Question(1,
                             R.drawable.appleimage_grayscale,
@@ -54,7 +52,7 @@ import android.widget.ImageView
                             "Maroon",
                             "Brown",
                             "Pink",
-                            1)
+                            3)
 
 
         val que5 = Question(5,
@@ -65,13 +63,13 @@ import android.widget.ImageView
                             "Pink",
                             "Yellow",
                             3)
-        questionsList.add(que1)
-        questionsList.add(que2)
-        questionsList.add(que3)
-        questionsList.add(que4)
-        questionsList.add(que5)
+        fruitsQuestionsList.add(que1)
+        fruitsQuestionsList.add(que2)
+        fruitsQuestionsList.add(que3)
+        fruitsQuestionsList.add(que4)
+        fruitsQuestionsList.add(que5)
 
-        return questionsList
+        return fruitsQuestionsList
     }
 
     fun getFlowersQuestion() : MutableList<Question>
@@ -130,6 +128,7 @@ import android.widget.ImageView
         flowersQuestionList.add(que3)
         flowersQuestionList.add(que4)
         flowersQuestionList.add(que5)
+
         return flowersQuestionList
     }
 }

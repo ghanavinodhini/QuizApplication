@@ -71,7 +71,7 @@ class ResultsActivity : AppCompatActivity() {
     fun displayAlert()
     {
         val dialogBuilder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
-        dialogBuilder.setTitle("Exit")
+        dialogBuilder.setTitle("Confirm Exit!!")
                     .setMessage("Are You Sure To Quit?")
                     .setPositiveButton("YES")
         {
