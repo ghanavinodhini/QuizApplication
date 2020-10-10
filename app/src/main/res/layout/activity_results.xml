@@ -48,11 +48,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorHint"
         android:text="@string/score_textview"
         android:textAlignment="center"
-        android:textSize="30sp"
         android:textColor="@color/colorText"
+        android:textSize="30sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -136,6 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/correctSignImageView"
         app:srcCompat="@drawable/wrong_sign" />
 
+    <!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/replay_button"
         android:layout_width="wrap_content"
@@ -159,7 +160,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skipped_textView"
         app:srcCompat="@drawable/wrong_sign" />
-
+-->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -182,5 +183,20 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wronglyAnswered_textView" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemTextColor="@color/colorText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

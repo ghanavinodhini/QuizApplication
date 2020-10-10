@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import kotlinx.android.synthetic.main.activity_results.*
 
 class ResultsActivity : AppCompatActivity() {
@@ -50,15 +51,26 @@ class ResultsActivity : AppCompatActivity() {
         skippedTextView.text = getString(R.string.skipped_textview,skipQuestions.toString())
        playerNameTextView.text = getString(R.string.playername_textview,playerName)
 
-
-        replay_button.setOnClickListener{
+//Bottom Navigation menu
+        bottomNavigationResults.setOnNavigationItemSelectedListener {
+    when(it.itemId)
+    {
+        R.id.action_home->restartQuiz()
+        R.id.action_exit->displayAlert()
+    }
+    true
+}
+        /*replay_button.setOnClickListener{
             restartQuiz()
         }
 
         quitButton.setOnClickListener{
             displayAlert()
-        }
+        }*/
     }
+
+
+
     //Restart MainActivity on Replay
     fun restartQuiz()
     {
@@ -80,7 +92,7 @@ class ResultsActivity : AppCompatActivity() {
         dialogBuilder.setNegativeButton("NO")
         {
             dialog,which->
-            Toast.makeText(this,"You clicked NO button",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"You clicked NO button",Toast.LENGTH_SHORT).show()
         }
 
         val alert = dialogBuilder.create()
@@ -95,7 +107,7 @@ class ResultsActivity : AppCompatActivity() {
         if (navBackCount == 1)
         {
             Log.d("!!!", "pressed once")
-            Toast.makeText(this, "Press again to exit", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
         }
         if (navBackCount == 2)
         {

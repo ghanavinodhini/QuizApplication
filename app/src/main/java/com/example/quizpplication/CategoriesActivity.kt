@@ -21,7 +21,8 @@ class CategoriesActivity : AppCompatActivity() {
     lateinit var recyclerView: RecyclerView
     val cardPadding = 30
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
@@ -31,11 +32,10 @@ class CategoriesActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         //Call function for spacing between cards
         recyclerView.addItemDecoration(cardViewItemDecoration(cardPadding))
-
         recyclerView.adapter = CategoriesRecyclerAdapter(this, DataManager.categories)
 
-
     }
+
 //Display help icon in Action bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater

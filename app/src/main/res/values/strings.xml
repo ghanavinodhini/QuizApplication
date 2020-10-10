@@ -3,7 +3,7 @@
     <string name="category_title">Choose Category</string>
     <string name="edit_nametext">Enter Your Name</string>
     <string name="start_button">START</string>
-    <string name="splash_text">!!QUIZ!!</string>
+    <string name="splash_text">GUESS COLORS QUIZ</string>
     <string name="welcome_textview">! WELCOME !</string>
     <string name="question_textview">Guess The Color Of This %1$s?</string>
     <string name="progrssBar_text">0/5</string>
@@ -17,5 +17,6 @@
     <string name="correctlyAnswered_textview">CORRECT:%1$s </string>
     <string name="wronglyAnswered_textview">WRONG:%1$s </string>
     <string name="skipped_textview">SKIPPED:%1$s</string>
-    <string name="quit_button">QUIT</string>
+    <string name="home_button">HOME</string>
+    <string name="quit_button">EXIT</string>
 </resources>

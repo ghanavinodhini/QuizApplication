@@ -6,7 +6,7 @@
     <!--help icon-->
     <item
         android:id="@+id/action_help"
-        android:title=""
+        android:title="help"
         android:icon="@drawable/ic_baseline_help_24"
         app:showAsAction="always"/>
 </menu>
