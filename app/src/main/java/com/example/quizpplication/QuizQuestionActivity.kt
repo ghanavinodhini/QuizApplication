@@ -16,25 +16,23 @@ import kotlinx.android.synthetic.main.activity_quiz_question.*
 class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 {
     //Each time this Activity starts first time, we start with question 1
-    var myCurrentQuestion:Int = 1
+    private var myCurrentQuestion:Int = 1
     //Create instance of class Question as List variable to hold all questions details
-    var myQuestionsList= mutableListOf<Question>()
-    //Set variable to check if any options selected in question
-    var mySelectedOptionPosition:Int = 0
+    private var myQuestionsList= mutableListOf<Question>()
     //Set variable to hold correctly answered
-    var correctAnswered = 0
+    private var correctAnswered = 0
     //Set variable to hold wrongly answered
-    var wrongAnswered = 0
+    private var wrongAnswered = 0
     //Set variable to hold skipped answers
-    var skippedQuestions = 0
+    private var skippedQuestions = 0
     //Set score value
-    var score = 0
+    private var score = 0
     //Set flag variable to deactivate buttons after click
-    var optionButtonClickFlag = false
+    private var optionButtonClickFlag = false
     //Create timer variable
-    lateinit var timer:CountDownTimer
+    private lateinit var timer:CountDownTimer
     //Create variable to hold categorytext view value
-    lateinit var categoryName:String
+    private lateinit var categoryName:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +66,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         setQuestion()
 
         //Timer Implementation
-        //Create variable for timer
          timer = MyCounter(10000, 1000)
         timer.start()
 
@@ -95,7 +92,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
     }
 
-    //Timer class
+    //Implement Timer countdown
     inner class MyCounter(millisInFuture: Long, countDownInterval: Long):CountDownTimer(millisInFuture, countDownInterval)
     {
         var timerCount = 0
@@ -104,7 +101,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             //timerTextView.text = (millisUntilFinished/1000).toString()
             timerTextView.text = timerCount.toString()
         }
-
+//Implement timer OnFinish()
         override fun onFinish() {
             displayTimeUpMessage("TIMEUP",500)
             timerCount = 0
@@ -131,8 +128,8 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             Log.d("!!!", "Skipped: $skippedQuestions")
         }
     }
-    //Display Toast Tmeup message for half second
-    fun displayTimeUpMessage( text:String,  duration:Long)
+    //Display Toast Timeup message for half second
+    private fun displayTimeUpMessage( text:String,  duration:Long)
     {
 
             val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
@@ -146,7 +143,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     }
 
     //Diplay next question if question number lessthan/equalto questionsList
-    fun displayNextQuestion(questionNumber: Int)
+    private fun displayNextQuestion(questionNumber: Int)
     {
         if(questionNumber <= myQuestionsList.size){
             setQuestion()
@@ -157,7 +154,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     }
 
     //Display Questions Details
-    fun setQuestion()
+    private fun setQuestion()
     {
         //Get current Question details from questionsList
         val currentQuestionDisplay = myQuestionsList.get(myCurrentQuestion - 1)
@@ -183,7 +180,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         optionFourButton.text = currentQuestionDisplay.optionFour
     }
 
-    fun defaultOptionsView()
+    private fun defaultOptionsView()
     {
         Log.d("!!!", "Inside defaultOptionsView function")
 
@@ -240,15 +237,14 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
 
     //Validate user selected option
-    fun selectedOptionValidate(selectedBtn: Button, selectedOptionNumber: Int)
+    private fun selectedOptionValidate(selectedBtn: Button, selectedOptionNumber: Int)
     {
         val currentQuestionValidate = myQuestionsList!!.get(myCurrentQuestion - 1)
-
         //Set to original image
         currentQuestionValidate.image?.let { qv_imageView.setImageResource(it) }
         //Set all other options default
         defaultOptionsView()
-       //mySelectedOptionPosition = selectedOptionNumber
+
 
         //Compare user selected option and correct answer and display button in Green color if correct
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
@@ -266,13 +262,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 wrongAnswered+=1
             answerDisplay(currentQuestionValidate.correctAnswer)
         }
-
-        //mySelectedOptionPosition = selectedOptionNumber
-
     }
 
-    //Display correct answwer
-    fun answerDisplay(answer: Int)
+    //Display correct answer
+    private fun answerDisplay(answer: Int)
     {
         Log.d("!!!", "Inside answerDisplay function")
         when(answer)
@@ -296,7 +289,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
     }
 
-    fun startResultsActivity()
+    private fun startResultsActivity()
     {
         val intent = Intent(this, ResultsActivity::class.java)
 
@@ -316,6 +309,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Back navigation button handling to Categories Activity
     override fun onBackPressed()
     {
+        timer.cancel()
         val intent = Intent(this,CategoriesActivity::class.java)
         startActivity(intent)
         //Finish Question Activity

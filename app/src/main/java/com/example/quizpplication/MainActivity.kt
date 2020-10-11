@@ -27,13 +27,8 @@ class MainActivity : AppCompatActivity() {
             //Check if value is entered in Text box
             if(nameEditText.text.toString() != "")
             {
-             /*   Log.d("!!!", "Hej ${nameEditText.text}")
-               //Call startQuizQuestionActivity function
-                startQuizQuestionActivity()*/
-
                 DataManager.playerName = nameEditText.text.toString()
                 Log.d("!!!","PlayerName: ${DataManager.playerName}")
-
                 startCategoriesActivity()
 
             }
@@ -46,21 +41,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-   /* fun startQuizQuestionActivity()
-    {
-        //Create intent to pass communicate with QuizQuestion Activity
-        val intent = Intent(this,QuizQuestionActivity::class.java)
-        //Pass playerName data to QuizQuestion Activity
-        intent.putExtra("playerName",nameEditText.text.toString())
-        //Start Quiz Question activity
-        startActivity(intent)
-        //Finish Quiz Question Activity
-        finish()
-    }*/
-
+//Start Categories Activity
     fun startCategoriesActivity()
     {
+        //Create intent to communicate with Categories Activity
         val intent = Intent(this,CategoriesActivity::class.java)
         startActivity(intent)
         finish()

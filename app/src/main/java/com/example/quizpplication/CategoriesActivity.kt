@@ -26,25 +26,23 @@ class CategoriesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
 
-
         recyclerView = findViewById(R.id.recyclerView)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
-        //Call function for spacing between cards
+
         recyclerView.addItemDecoration(cardViewItemDecoration(cardPadding))
         recyclerView.adapter = CategoriesRecyclerAdapter(this, DataManager.categories)
 
     }
 
-//Display help icon in Action bar
+    //Display help icon in Action bar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.appmenu, menu)
         return true
     }
+    // Implement help icon click
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
-        // Handle help item selection
         return when (item.itemId)
         {
             R.id.action_help -> {
@@ -54,7 +52,7 @@ class CategoriesActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item) //returns default false value
         }
     }
-
+//Implement help dialog
 fun showHelp()
 {
     val dialogBuilder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
@@ -74,6 +72,7 @@ fun showHelp()
         recyclerView.adapter?.notifyDataSetChanged()
 
     }
+    //Implement spacing between cards in recyclerview
     inner class cardViewItemDecoration(private val padding:Int):RecyclerView.ItemDecoration()
     {
         override fun getItemOffsets(
