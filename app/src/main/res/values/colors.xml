@@ -7,9 +7,10 @@
     <color name="colorText">#6228C8</color>
     <color name="colorHint">#8C8989</color>
     <color name="welcomeColorText">#EA0955</color>
+    <color name="edittext_bg">#F8F9FB</color>
     <color name="optionBtnTextColor">#0B0A0B</color>
     <color name="options_darker_gray">#8C898A</color>
-    <color name="startColour">#D54BE4</color>
-    <color name="endColour">#C13061</color>
-    <color name="centerColour">#BF7405</color>
+    <color name="startColour">#ECB398</color>
+    <color name="endColour">#CD7995</color>
+    <color name="centerColour">#ECE7E1</color>
 </resources>

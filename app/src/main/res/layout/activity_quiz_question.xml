@@ -17,6 +17,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="20sp"
+        android:background="@drawable/edittext_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qv_imageView" />
 
-    <!--Adding Options buttons-->
 
     <TextView
         android:id="@+id/progressTextView"
@@ -74,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/qv_imageView"
         tools:text="@string/progrssBar_text" />
 
+    <!--Adding Options buttons-->
     <Button
         android:id="@+id/optionOneButton"
         android:layout_width="wrap_content"
@@ -181,7 +182,8 @@
         android:id="@+id/timerTextView"
         android:layout_width="153dp"
         android:layout_height="52dp"
-        android:text="0"
+        android:text=""
+        android:textColor="@color/welcomeColorText"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -195,6 +197,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Timer"
+        android:textColor="@color/welcomeColorText"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/timerTextView"

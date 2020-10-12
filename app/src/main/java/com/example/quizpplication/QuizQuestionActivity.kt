@@ -47,19 +47,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         val questionTextView = findViewById<TextView>(R.id.questionTextView)
         //Create instance of class Question to access its members and functions
         val qDisplay = Question()
-        //Retreive all list of questions
-        if(categoryName == "Fruits")
-        {
-            questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
-            //questionTextView.setText(R.string.question_textview)
-            myQuestionsList = qDisplay.getFruitsQuestions()
-        }
-        if(categoryName == "Flowers")
-        {
-            questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
-            //questionTextView.setText(R.string.flowers_question_textview)
-            myQuestionsList = qDisplay.getFlowersQuestion()
-        }
+        // Retreive list of questions
+        questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
+        myQuestionsList = qDisplay.getQuestions(categoryName)
+
         Log.d("!!!", "No.of questions: ${myQuestionsList.size}")
 
         //Set first question
@@ -103,13 +94,11 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
 //Implement timer OnFinish()
         override fun onFinish() {
-            displayTimeUpMessage("TIMEUP",500)
+            displayTimeUpMessage("TIMEOUT",500)
             timerCount = 0
             timerTextView.text = timerCount.toString()
 
-           // timerTextView.text="0"
-
-            //Check if current Question is not last question and display next button
+            //Check if current Question is not final question and display next button
             if(myCurrentQuestion!=myQuestionsList.size)
                 next_floatButton.show()
             else
