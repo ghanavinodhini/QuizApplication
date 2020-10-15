@@ -91,8 +91,8 @@
         android:id="@+id/wronglyAnswered_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="76dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/wronglyAnswered_textview"
         android:textSize="18sp"
@@ -118,9 +118,9 @@
         android:id="@+id/correctSignImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toStartOf="@+id/correctlyAnswered_textView"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView"
         app:srcCompat="@drawable/correct_sign" />
@@ -161,13 +161,15 @@
         app:layout_constraintTop_toBottomOf="@+id/skipped_textView"
         app:srcCompat="@drawable/wrong_sign" />
 -->
+
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toStartOf="@+id/skipped_textView"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wrongSignImageView"
         app:srcCompat="@drawable/skip_sign" />
@@ -176,14 +178,13 @@
         android:id="@+id/skipped_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="68dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/skipped_textview"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wronglyAnswered_textView" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationResults"

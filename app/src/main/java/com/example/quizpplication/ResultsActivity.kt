@@ -21,7 +21,8 @@ class ResultsActivity : AppCompatActivity() {
     //Create a variable to hold count for back button press
     var navBackCount = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
@@ -49,30 +50,34 @@ class ResultsActivity : AppCompatActivity() {
         correctAnsweredTextView.text = getString(R.string.correctlyAnswered_textview,correctAnswers.toString())
         wrongAnsweredTextView.text = getString(R.string.wronglyAnswered_textview,wrongAnswers.toString())
         skippedTextView.text = getString(R.string.skipped_textview,skipQuestions.toString())
-       playerNameTextView.text = getString(R.string.playername_textview,playerName)
+        playerNameTextView.text = getString(R.string.playername_textview,playerName)
 
-//Bottom Navigation menu
+        displayTrophyImage(score,totalQuestions)
+
+    //Bottom Navigation menu
         bottomNavigationResults.setOnNavigationItemSelectedListener {
-    when(it.itemId)
+        when(it.itemId)
     {
         R.id.action_home->restartQuiz()
         R.id.action_exit->displayAlert()
     }
-    true
-}
-        /*replay_button.setOnClickListener{
-            restartQuiz()
-        }
-
-        quitButton.setOnClickListener{
-            displayAlert()
-        }*/
+        true
+    }
     }
 
+    //Display trophy image based on score
+private fun displayTrophyImage(score:Int,totalQuestions:Int)
+{
+    when(score)
+    {
+        totalQuestions->trophyImageView.setImageResource(R.drawable.trophy)
+        0-> trophyImageView.setImageResource(R.drawable.lose_emoji)
+        else->trophyImageView.setImageResource(R.drawable.star_win_emoji)
+    }
 
-
+}
     //Restart MainActivity on Replay
-    fun restartQuiz()
+    private fun restartQuiz()
     {
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
@@ -80,7 +85,7 @@ class ResultsActivity : AppCompatActivity() {
     }
 
     //Display Alert Dialog for quit app
-    fun displayAlert()
+    private fun displayAlert()
     {
         val dialogBuilder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
         dialogBuilder.setTitle("Confirm Exit!!")
@@ -106,12 +111,10 @@ class ResultsActivity : AppCompatActivity() {
 
         if (navBackCount == 1)
         {
-            Log.d("!!!", "pressed once")
             Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
         }
         if (navBackCount == 2)
         {
-            Log.d("!!!", "Back button pressed twice")
             super.onBackPressed()
             return
         }

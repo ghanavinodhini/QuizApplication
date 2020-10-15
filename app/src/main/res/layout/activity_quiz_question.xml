@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/questionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -17,7 +17,6 @@
         android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="20sp"
-        android:background="@drawable/edittext_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,13 +29,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="5dp"
+        android:contentDescription="@string/imageDescription"
         android:src="@drawable/appleimage"
         app:layout_constraintBottom_toTopOf="@+id/progressTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-        android:contentDescription="@string/imageDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
 
 
     <ProgressBar
@@ -180,29 +179,19 @@
 
     <TextView
         android:id="@+id/timerTextView"
-        android:layout_width="153dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_circle"
         android:text=""
-        android:textColor="@color/welcomeColorText"
         android:textAlignment="center"
+        android:textColor="@color/welcomeColorText"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
+        app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionFourButton" />
-
-    <TextView
-        android:id="@+id/timerLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Timer"
-        android:textColor="@color/welcomeColorText"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/timerTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/optionThreeButton" />
+        app:layout_constraintTop_toBottomOf="@+id/optionThreeButton"
+        app:layout_constraintVertical_bias="0.706" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
