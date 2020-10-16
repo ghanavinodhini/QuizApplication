@@ -3,7 +3,7 @@ package com.example.quizpplication
 object DataManager
 {
     lateinit var playerName:String
-    val helpMessage =
+    const val helpMessage =
         "How to Play?\n" +
                 "Player chooses a Category.\n"+
                 "Colourless image will be displayed with options to find the image colour within 10 seconds.\n" +
@@ -20,13 +20,14 @@ object DataManager
         createQuestionsData()
     }
 
-    fun createCategoryData()
+    private fun createCategoryData()
     {
         categories.add(Category("Fruits",R.drawable.fruits))
         categories.add(Category("Flowers",R.drawable.flowers))
+        categories.add(Category("Vegetables",R.drawable.vegetables))
     }
 
-    fun createQuestionsData()
+    private fun createQuestionsData()
     {
         val que1 = Question(1,
                             R.drawable.appleimage_grayscale,
@@ -146,5 +147,61 @@ object DataManager
         questionsList.add(que8)
         questionsList.add(que9)
         questionsList.add(que10)
+
+        val que11 = Question(11,
+                            R.drawable.beetroot_grayscale,
+                            R.drawable.beetrootimage,
+                            "Blue",
+                            "Green",
+                            "Purple",
+                            "Yellow",
+                            3,
+                            "Vegetables")
+
+        val que12 = Question(12,
+                            R.drawable.broccoli_grayscale,
+                            R.drawable.broccoliimage,
+                            "Pink",
+                            "Green",
+                            "Red",
+                            "Brown",
+                            2,
+                            "Vegetables")
+
+        val que13 = Question(13,
+                            R.drawable.capsicum_grayscale,
+                            R.drawable.capsicumimage,
+                            "Black",
+                            "Green",
+                            "Red",
+                            "Yellow",
+                            4,
+                            "Vegetables")
+
+        val que14 = Question(14,
+                            R.drawable.carrot_grayscale,
+                            R.drawable.carrotimage,
+                            "Blue",
+                            "Orange",
+                            "Green",
+                            "Yellow",
+                            2,
+                            "Vegetables")
+
+        val que15 = Question(15,
+                            R.drawable.radish_grayscale,
+                            R.drawable.radishimage,
+                            "Red",
+                            "Green",
+                            "White",
+                            "Blue",
+                            3,
+                            "Vegetables")
+
+        questionsList.add(que11)
+        questionsList.add(que12)
+        questionsList.add(que13)
+        questionsList.add(que14)
+        questionsList.add(que15)
     }
 }

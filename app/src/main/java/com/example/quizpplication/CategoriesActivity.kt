@@ -1,6 +1,5 @@
 package com.example.quizpplication
 
-import android.content.Intent
 import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,16 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_categories.*
 
-class CategoriesActivity : AppCompatActivity() {
+class CategoriesActivity : AppCompatActivity()
+{
 
     lateinit var recyclerView: RecyclerView
-    val cardPadding = 30
+    private val cardPadding = 30
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -29,13 +26,28 @@ class CategoriesActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        recyclerView.addItemDecoration(cardViewItemDecoration(cardPadding))
+        recyclerView.addItemDecoration(CardViewItemDecoration(cardPadding))
         recyclerView.adapter = CategoriesRecyclerAdapter(this, DataManager.categories)
 
     }
 
+    //Implement spacing between cards in recyclerview
+    inner class CardViewItemDecoration(private val padding:Int):RecyclerView.ItemDecoration()
+    {
+        override fun getItemOffsets(
+            outRect: Rect,
+            view: View,
+            parent: RecyclerView,
+            state: RecyclerView.State)
+        {
+            super.getItemOffsets(outRect, view, parent, state)
+            outRect.top = padding
+        }
+    }
+
     //Display help icon in Action bar
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.appmenu, menu)
         return true
@@ -53,7 +65,7 @@ class CategoriesActivity : AppCompatActivity() {
         }
     }
 //Implement help dialog
-fun showHelp()
+private fun showHelp()
 {
     val dialogBuilder = AlertDialog.Builder(this,R.style.AlertDialogTheme)
     dialogBuilder.setTitle("Help Info")
@@ -72,17 +84,5 @@ fun showHelp()
         recyclerView.adapter?.notifyDataSetChanged()
 
     }
-    //Implement spacing between cards in recyclerview
-    inner class cardViewItemDecoration(private val padding:Int):RecyclerView.ItemDecoration()
-    {
-        override fun getItemOffsets(
-            outRect: Rect,
-            view: View,
-            parent: RecyclerView,
-            state: RecyclerView.State)
-        {
-            super.getItemOffsets(outRect, view, parent, state)
-            outRect.top = padding
-        }
-    }
+
 }

@@ -1,6 +1,5 @@
 package com.example.quizpplication
 
-import android.provider.ContactsContract
 
 //this class contains Questions data
  class Question (val id:Int? = null,

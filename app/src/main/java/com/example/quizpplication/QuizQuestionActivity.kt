@@ -57,16 +57,16 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         setQuestion()
 
         //Timer Implementation
-         timer = MyCounter(10000, 1000)
-        timer.start()
+         timer = MyCounter(10*1000, 1000)
+         timer.start()
 
-        //Set OnclickListener event for all 'option' buttons
+
         optionOneButton.setOnClickListener(this)
         optionTwoButton.setOnClickListener(this)
         optionThreeButton.setOnClickListener(this)
         optionFourButton.setOnClickListener(this)
 
-        //Set OnClickListener for 'next' button
+
         next_floatButton.setOnClickListener{
             Log.d("!!!", "next button pressed!!")
                 Log.d("!!!", "Entering incrementing question")
@@ -75,7 +75,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
             }
-        //Set OnClickListener for 'doneAll' button
+
         doneAll_floatButton.setOnClickListener{
             Log.d("!!!", "Done All button pressed!")
             //Start Results Activity on doneAll button click
@@ -89,10 +89,11 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         var timerCount = 0
         override fun onTick(millisUntilFinished: Long) {
             timerCount = (millisUntilFinished/1000).toInt()+1
+            Log.d("!!!","timerCount:"+timerCount)
             //timerTextView.text = (millisUntilFinished/1000).toString()
             timerTextView.text = timerCount.toString()
         }
-//Implement timer OnFinish()
+    //Implement timer OnFinish()
         override fun onFinish() {
             displayTimeUpMessage("TIMEOUT",500)
             timerCount = 0
