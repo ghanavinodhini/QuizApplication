@@ -70,6 +70,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/totalQuestions_textview"
         android:textSize="18sp"
+        android:textColor="@color/optionBtnTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +85,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/correctlyAnswered_textview"
         android:textSize="18sp"
+        android:textColor="@color/optionBtnTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView" />
 
@@ -96,6 +98,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/wronglyAnswered_textview"
         android:textSize="18sp"
+        android:textColor="@color/optionBtnTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correctlyAnswered_textView" />
 
@@ -136,35 +139,9 @@
         app:layout_constraintTop_toBottomOf="@+id/correctSignImageView"
         app:srcCompat="@drawable/wrong_sign" />
 
-    <!--
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/replay_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/quitButton"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.464"
-        app:srcCompat="@drawable/ic_baseline_replay_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/quitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skipped_textView"
-        app:srcCompat="@drawable/wrong_sign" />
--->
-
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/skipSignimageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -183,6 +160,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/skipped_textview"
         android:textSize="18sp"
+        android:textColor="@color/optionBtnTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wronglyAnswered_textView" />
 
@@ -195,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/skipSignimageView"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_nav_menu"
         app:itemTextColor="@color/colorText"/>

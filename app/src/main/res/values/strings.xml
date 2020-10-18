@@ -3,7 +3,7 @@
     <string name="category_title">Choose Category</string>
     <string name="edit_nametext">Enter Your Name</string>
     <string name="start_button">START</string>
-    <string name="splash_text">*** GUESS COLORS QUIZ ***</string>
+    <string name="splash_text">GUESS COLORS QUIZ</string>
     <string name="welcome_textview">! WELCOME !</string>
     <string name="question_textview">Guess The Color Of This %1$s?</string>
     <string name="progrssBar_text">0/5</string>

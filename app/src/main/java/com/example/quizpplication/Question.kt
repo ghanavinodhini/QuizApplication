@@ -1,6 +1,5 @@
 package com.example.quizpplication
 
-
 //this class contains Questions data
  class Question (val id:Int? = null,
                  val image_grayscale:Int?=null,

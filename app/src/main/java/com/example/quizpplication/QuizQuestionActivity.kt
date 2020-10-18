@@ -37,9 +37,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_question)
-
-        Log.d("!!!", "In questions activity")
-        //Retreive categorytextview value
+        //Retreive category textview value
         categoryName = getIntent().getStringExtra("categoryname").toString()
         Log.d("!!!", "Category value: $categoryName")
 
@@ -51,7 +49,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
         myQuestionsList = qDisplay.getQuestions(categoryName)
 
-        Log.d("!!!", "No.of questions: ${myQuestionsList.size}")
+        //Log.d("!!!", "No.of questions: ${myQuestionsList.size}")
 
         //Set first question
         setQuestion()
@@ -69,7 +67,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 
         next_floatButton.setOnClickListener{
             Log.d("!!!", "next button pressed!!")
-                Log.d("!!!", "Entering incrementing question")
                 timer.start()
                 optionButtonClickFlag = false
                 myCurrentQuestion++
@@ -89,8 +86,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         var timerCount = 0
         override fun onTick(millisUntilFinished: Long) {
             timerCount = (millisUntilFinished/1000).toInt()+1
-            Log.d("!!!","timerCount:"+timerCount)
-            //timerTextView.text = (millisUntilFinished/1000).toString()
             timerTextView.text = timerCount.toString()
         }
     //Implement timer OnFinish()
@@ -103,7 +98,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             if(myCurrentQuestion!=myQuestionsList.size)
                 next_floatButton.show()
             else
-            //Display doneAll button in last question
                 doneAll_floatButton.show()
             //Set option button click to false
             optionButtonClickFlag = true
@@ -121,7 +115,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Display Toast Timeup message for half second
     private fun displayTimeUpMessage( text:String,  duration:Long)
     {
-
             val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
             toast.show()
             val handler = Handler()
@@ -170,10 +163,9 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         optionFourButton.text = currentQuestionDisplay.optionFour
     }
 
+    //Implement choices button display
     private fun defaultOptionsView()
     {
-        Log.d("!!!", "Inside defaultOptionsView function")
-
         //Create list variable for buttons and add all buttons
         val options = mutableListOf<Button>()
         options.add(0, optionOneButton)
@@ -205,10 +197,9 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         else
             //Display doneAll button in last question
             doneAll_floatButton.show()
-
+        //Validate each option button on button click
         when(view?.id)
         {
-            //Validate each option button on button click
             R.id.optionOneButton -> {
                 selectedOptionValidate(optionOneButton, 1)
             }
@@ -221,7 +212,6 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             R.id.optionFourButton -> {
                 selectedOptionValidate(optionFourButton, 4)
             }
-
         }
     }
 
@@ -239,10 +229,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Compare user selected option and correct answer and display button in Green color if correct
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
         {
-            selectedBtn.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
+            selectedBtn.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
                 correctAnswered += 1
                 score += 1
         }
@@ -260,22 +247,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         Log.d("!!!", "Inside answerDisplay function")
         when(answer)
         {
-            1 -> optionOneButton.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
-            2 -> optionTwoButton.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
-            3 -> optionThreeButton.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
-            4 -> optionFourButton.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
+            1 -> optionOneButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            2 -> optionTwoButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            3 -> optionThreeButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            4 -> optionFourButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
         }
     }
 
@@ -305,6 +280,5 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Finish Question Activity
         finish()
     }
-
 }
 

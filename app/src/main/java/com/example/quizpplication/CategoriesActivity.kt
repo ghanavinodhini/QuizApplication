@@ -16,7 +16,7 @@ class CategoriesActivity : AppCompatActivity()
 {
 
     lateinit var recyclerView: RecyclerView
-    private val cardPadding = 30
+    private val cardPadding = 20
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
