@@ -26,7 +26,7 @@ class ResultsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
-        Log.d("!!!","In Results Activity")
+                                        //Log.d("!!!","In Results Activity")
         scoreTextView = findViewById(R.id.score_textView)
         totalQuestionsTextView = findViewById(R.id.totalQuestions_textView)
         correctAnsweredTextView = findViewById(R.id.correctlyAnswered_textView)
@@ -40,10 +40,7 @@ class ResultsActivity : AppCompatActivity() {
         val skipQuestions = getIntent().getIntExtra("skipped",0)
         val totalQuestions = getIntent().getIntExtra("noOfQuestions",0)
         val playerName = DataManager.playerName
-
-        Log.d("!!!","Score value: $score")
-
-
+                                        //Log.d("!!!","Score value: $score")
         //Pass values to strings.xml file
         scoreTextView.text = getString(R.string.score_textview,score.toString())
         totalQuestionsTextView.text = getString(R.string.totalQuestions_textview,totalQuestions.toString())
@@ -57,17 +54,17 @@ class ResultsActivity : AppCompatActivity() {
     //Bottom Navigation menu
         bottomNavigationResults.setOnNavigationItemSelectedListener {
         when(it.itemId)
-    {
+        {
         R.id.action_home->restartQuiz()
         R.id.action_exit->displayAlert()
-    }
+        }
         true
     }
     }
 
     //Display trophy image based on score
-private fun displayTrophyImage(score:Int,totalQuestions:Int)
-{
+    private fun displayTrophyImage(score:Int,totalQuestions:Int)
+    {
     when(score)
     {
         totalQuestions->trophyImageView.setImageResource(R.drawable.trophy)
@@ -75,7 +72,7 @@ private fun displayTrophyImage(score:Int,totalQuestions:Int)
         else->trophyImageView.setImageResource(R.drawable.star_win_emoji)
     }
 
-}
+    }
     //Restart MainActivity on Replay
     private fun restartQuiz()
     {
@@ -108,7 +105,6 @@ private fun displayTrophyImage(score:Int,totalQuestions:Int)
     override fun onBackPressed()
     {
         navBackCount++
-
         if (navBackCount == 1)
         {
             Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show()
@@ -118,7 +114,5 @@ private fun displayTrophyImage(score:Int,totalQuestions:Int)
             super.onBackPressed()
             return
         }
-
     }
-
 }

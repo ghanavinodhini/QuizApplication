@@ -20,28 +20,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         nameEditText = findViewById(R.id.editTexPersonName)
-        Log.d("!!!","Code Runs")
+                                                //Log.d("!!!","Code Runs")
 
         startButton.setOnClickListener {
-            Log.d("!!!","Start Button pressed!")
+                                                //Log.d("!!!","Start Button pressed!")
             //Check if value is entered in Text box
             if(nameEditText.text.toString() != "")
             {
                 DataManager.playerName = nameEditText.text.toString()
-                Log.d("!!!","PlayerName: ${DataManager.playerName}")
+                                                //Log.d("!!!","PlayerName: ${DataManager.playerName}")
                 startCategoriesActivity()
-
             }
             else
             {
                 DataManager.playerName = ""
-                Log.d("!!!", "No name entered")
-                Log.d("!!!","PLayerName:${DataManager.playerName}")
+                                                //Log.d("!!!", "No name entered")
+                                                //Log.d("!!!","PLayerName:${DataManager.playerName}")
                 Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_LONG).show()
             }
         }
     }
-//Start Categories Activity
+
+    //Start Categories Activity
     fun startCategoriesActivity()
     {
         //Create intent to communicate with Categories Activity

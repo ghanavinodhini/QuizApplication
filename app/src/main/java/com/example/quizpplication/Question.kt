@@ -1,6 +1,6 @@
 package com.example.quizpplication
 
-//this class contains Questions data
+//this class contains Questions data members
  class Question (val id:Int? = null,
                  val image_grayscale:Int?=null,
                  val image:Int? = null,
@@ -18,8 +18,10 @@ package com.example.quizpplication
         val retQuestionList = mutableListOf<Question>()
         val qList = DataManager.questionsList
 
-        for (i in 0..qList.size-1){
-            if(qList[i].categoryType==categoryName) {
+        for (i in 0..qList.size-1)
+        {
+            if(qList[i].categoryType==categoryName)
+            {
                 retQuestionList.add(qList[i])
             }
         }

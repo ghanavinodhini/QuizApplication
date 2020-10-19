@@ -1,5 +1,6 @@
 package com.example.quizpplication
 
+//Contains all data used in app
 object DataManager
 {
     lateinit var playerName:String
@@ -15,7 +16,8 @@ object DataManager
     val categories = mutableListOf<Category>()
     val questionsList = mutableListOf<Question>()
 
-    init {
+    init
+    {
         createCategoryData()
         createQuestionsData()
     }

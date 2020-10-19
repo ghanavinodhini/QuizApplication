@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz_question.*
 
+
 class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 {
     //Each time this Activity starts first time, we start with question 1
@@ -34,28 +35,29 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Create variable to hold categorytext view value
     private lateinit var categoryName:String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_question)
+
         //Retreive category textview value
         categoryName = getIntent().getStringExtra("categoryname").toString()
-        Log.d("!!!", "Category value: $categoryName")
+                                    //Log.d("!!!", "Category value: $categoryName")
 
         //Set Question textview
         val questionTextView = findViewById<TextView>(R.id.questionTextView)
         //Create instance of class Question to access its members and functions
         val qDisplay = Question()
         // Retreive list of questions
-        questionTextView.text = getString(R.string.question_textview,categoryName.dropLast(1))
+        questionTextView.text = getString(R.string.question_textview, categoryName.dropLast(1))
         myQuestionsList = qDisplay.getQuestions(categoryName)
 
-        //Log.d("!!!", "No.of questions: ${myQuestionsList.size}")
-
+                                    //Log.d("!!!", "No.of questions: ${myQuestionsList.size}")
         //Set first question
         setQuestion()
 
         //Timer Implementation
-         timer = MyCounter(10*1000, 1000)
+         timer = MyCounter(10 * 1000, 1000)
          timer.start()
 
 
@@ -64,18 +66,17 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         optionThreeButton.setOnClickListener(this)
         optionFourButton.setOnClickListener(this)
 
-
+        //Implement next button click functionalities
         next_floatButton.setOnClickListener{
-            Log.d("!!!", "next button pressed!!")
+                                    //Log.d("!!!", "next button pressed!!")
                 timer.start()
                 optionButtonClickFlag = false
                 myCurrentQuestion++
                 displayNextQuestion(myCurrentQuestion)
             }
-
+        //Start Results Activity on doneAll button click
         doneAll_floatButton.setOnClickListener{
-            Log.d("!!!", "Done All button pressed!")
-            //Start Results Activity on doneAll button click
+                                    //Log.d("!!!", "Done All button pressed!")
             startResultsActivity()
         }
     }
@@ -90,7 +91,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         }
     //Implement timer OnFinish()
         override fun onFinish() {
-            displayTimeUpMessage("TIMEOUT",500)
+            displayTimeUpMessage("TIMEOUT", 500)
             timerCount = 0
             timerTextView.text = timerCount.toString()
 
@@ -109,17 +110,17 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
             myQuestionsList.get(myCurrentQuestion - 1).image?.let { qv_imageView.setImageResource(it) }
             //Increment skipped Questions
             skippedQuestions+=1
-            Log.d("!!!", "Skipped: $skippedQuestions")
+                                        //Log.d("!!!", "Skipped: $skippedQuestions")
         }
     }
     //Display Toast Timeup message for half second
-    private fun displayTimeUpMessage( text:String,  duration:Long)
+    private fun displayTimeUpMessage(text: String, duration: Long)
     {
             val toast = Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT)
             toast.show()
             val handler = Handler()
-            handler.postDelayed(object:Runnable {
-                 override fun run() {
+            handler.postDelayed(object : Runnable {
+                override fun run() {
                     toast.cancel()
                 }
             }, duration)
@@ -187,6 +188,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Implement option buttons onClick functionality
     override fun onClick(view: View?)
     {
+
         //Cancel timer on option button click
         timer.cancel()
         //Set button click flag to true on Click
@@ -229,7 +231,10 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Compare user selected option and correct answer and display button in Green color if correct
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
         {
-            selectedBtn.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            selectedBtn.background = ContextCompat.getDrawable(
+                this,
+                R.drawable.correct_button_color
+            )
                 correctAnswered += 1
                 score += 1
         }
@@ -244,12 +249,15 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     //Display correct answer
     private fun answerDisplay(answer: Int)
     {
-        Log.d("!!!", "Inside answerDisplay function")
+                                    //Log.d("!!!", "Inside answerDisplay function")
         when(answer)
         {
             1 -> optionOneButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+
             2 -> optionTwoButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+
             3 -> optionThreeButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+
             4 -> optionFourButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
         }
     }
@@ -275,7 +283,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
     override fun onBackPressed()
     {
         timer.cancel()
-        val intent = Intent(this,CategoriesActivity::class.java)
+        val intent = Intent(this, CategoriesActivity::class.java)
         startActivity(intent)
         //Finish Question Activity
         finish()

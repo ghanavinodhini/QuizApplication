@@ -29,6 +29,7 @@
         android:textColor="@color/welcomeColorText"
         android:text="@string/splash_text"
         android:textAlignment="center"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

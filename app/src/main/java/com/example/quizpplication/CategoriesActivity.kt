@@ -28,7 +28,6 @@ class CategoriesActivity : AppCompatActivity()
 
         recyclerView.addItemDecoration(CardViewItemDecoration(cardPadding))
         recyclerView.adapter = CategoriesRecyclerAdapter(this, DataManager.categories)
-
     }
 
     //Implement spacing between cards in recyclerview
@@ -82,7 +81,5 @@ private fun showHelp()
     {
         super.onResume()
         recyclerView.adapter?.notifyDataSetChanged()
-
     }
-
 }
