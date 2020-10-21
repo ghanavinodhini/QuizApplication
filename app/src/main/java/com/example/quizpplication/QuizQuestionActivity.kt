@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -231,10 +232,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Compare user selected option and correct answer and display button in Green color if correct
         if(selectedOptionNumber==currentQuestionValidate.correctAnswer)
         {
-            selectedBtn.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.correct_button_color
-            )
+            selectedBtn.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
                 correctAnswered += 1
                 score += 1
         }
@@ -252,13 +250,25 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                                     //Log.d("!!!", "Inside answerDisplay function")
         when(answer)
         {
-            1 -> optionOneButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            1 -> {
+                optionOneButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+                manageButtonAnimation(optionOneButton)
+            }
 
-            2 -> optionTwoButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            2 -> {
+                optionTwoButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+                manageButtonAnimation(optionTwoButton)
+            }
 
-            3 -> optionThreeButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            3 -> {
+                optionThreeButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+                manageButtonAnimation(optionThreeButton)
+            }
 
-            4 -> optionFourButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+            4 -> {
+                optionFourButton.background = ContextCompat.getDrawable(this, R.drawable.correct_button_color)
+                manageButtonAnimation(optionFourButton)
+            }
         }
     }
 
@@ -288,5 +298,12 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         //Finish Question Activity
         finish()
     }
+
+    private fun manageButtonAnimation(btn:Button)
+    {
+        val btnAnimation = AnimationUtils.loadAnimation(this, R.anim.blink)
+        btn.startAnimation(btnAnimation)
+    }
 }
+
 

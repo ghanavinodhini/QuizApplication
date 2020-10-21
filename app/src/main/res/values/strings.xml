@@ -11,7 +11,7 @@
     <string name="submit_button">SUBMIT</string>
     <string name="next_button">NEXT</string>
     <string name="reults_textview">RESULTS BOARD</string>
-    <string name="playername_textview">!! Hi %1$s !!</string>
+    <string name="playername_textview">! Hi %1$s !</string>
     <string name="score_textview">YOUR SCORE: %1$s</string>
     <string name="totalQuestions_textview">TOTAL QUESTIONS: %1$s </string>
     <string name="correctlyAnswered_textview">CORRECT:%1$s </string>

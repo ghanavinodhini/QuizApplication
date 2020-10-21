@@ -34,7 +34,8 @@
         android:layout_marginBottom="8dp"
         android:text="@string/playername_textview"
         android:textAlignment="center"
-        android:textSize="21sp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultsTextView"
@@ -65,12 +66,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/totalQuestions_textview"
-        android:textSize="18sp"
         android:textColor="@color/optionBtnTextColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,12 +81,12 @@
         android:id="@+id/correctlyAnswered_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/correctlyAnswered_textview"
-        android:textSize="18sp"
         android:textColor="@color/optionBtnTextColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView" />
 
@@ -93,12 +94,12 @@
         android:id="@+id/wronglyAnswered_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="156dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/wronglyAnswered_textview"
-        android:textSize="18sp"
         android:textColor="@color/optionBtnTextColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correctlyAnswered_textView" />
 
@@ -121,32 +122,35 @@
         android:id="@+id/correctSignImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/correctlyAnswered_textView"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalQuestions_textView"
         app:srcCompat="@drawable/correct_sign" />
+
 
     <ImageView
         android:id="@+id/wrongSignImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/wronglyAnswered_textView"
-        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correctSignImageView"
         app:srcCompat="@drawable/wrong_sign" />
-
 
     <ImageView
         android:id="@+id/skipSignimageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/skipped_textView"
-        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wrongSignImageView"
         app:srcCompat="@drawable/skip_sign" />
@@ -155,12 +159,12 @@
         android:id="@+id/skipped_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="148dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/skipped_textview"
-        android:textSize="18sp"
         android:textColor="@color/optionBtnTextColor"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wronglyAnswered_textView" />
 
@@ -169,13 +173,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:colorAccent"
+        app:itemTextColor="@color/colorText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skipSignimageView"
         app:layout_constraintVertical_bias="1.0"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemTextColor="@color/colorText"/>
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
