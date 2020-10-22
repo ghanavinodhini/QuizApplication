@@ -38,15 +38,16 @@
             android:id="@+id/categoryListTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="160dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
             android:textColor="@color/colorText"
             android:textSize="20sp"
-            android:textAlignment="center"
+            android:fontFamily="sans-serif-black"
             app:layout_constraintEnd_toEndOf="@+id/categoryListImageView"
-            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryListImageView" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

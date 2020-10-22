@@ -11,7 +11,8 @@
     <color name="optionBtnTextColor">#0B0A0B</color>
     <color name="options_darker_gray">#9A9798</color>
     <color name="timerCircleColor">#D8A5D7</color>
+    <color name="navItemTextColor">#FBF8FB</color>
     <color name="startColour">#DECEED</color>
     <color name="endColour">#CD7995</color>
-    <color name="centerColour">#F4EBF6</color>
+    <color name="centerColour">#E8ECEB</color>
 </resources>

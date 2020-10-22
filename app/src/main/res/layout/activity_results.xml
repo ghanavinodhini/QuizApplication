@@ -17,7 +17,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/reults_textview"
         android:textAlignment="center"
-        android:textColor="#0F5DE6"
+        android:textColor="@color/colorText"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/playerName_textView"
         app:layout_constraintEnd_toEndOf="parent"
