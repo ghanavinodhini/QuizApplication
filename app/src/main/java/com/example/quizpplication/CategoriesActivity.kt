@@ -22,7 +22,7 @@ class CategoriesActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
-
+        //Display items as linear list
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -77,6 +77,7 @@ private fun showHelp()
     val alert = dialogBuilder.create()
     alert.show()
 }
+    //Notify adapter that dataset has change
     override fun onResume()
     {
         super.onResume()

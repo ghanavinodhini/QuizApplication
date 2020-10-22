@@ -101,7 +101,7 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
                 next_floatButton.show()
             else
                 doneAll_floatButton.show()
-            //Set option button click to false
+            //Set option button click to true
             optionButtonClickFlag = true
             //Disable all option buttons
             defaultOptionsView()
