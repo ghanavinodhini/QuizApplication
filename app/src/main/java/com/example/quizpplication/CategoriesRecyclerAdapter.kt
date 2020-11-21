@@ -3,15 +3,18 @@ package com.example.quizpplication
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.quizpplication.roomDB.CategoryEntity
+import kotlinx.android.synthetic.main.categories_list_view.view.*
 
 //Adapter holds list of categories
-class CategoriesRecyclerAdapter(val context: Context, val categories : List<Category>): RecyclerView.Adapter<RecyclerView.ViewHolder>()
+/*class CategoriesRecyclerAdapter(val context: Context, val categories : List<Category>): RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     val layoutInflater = LayoutInflater.from(context)
 
@@ -59,5 +62,57 @@ class CategoriesRecyclerAdapter(val context: Context, val categories : List<Cate
              (context as CategoriesActivity).finish()
          }
      }
+    }
+}*/
+
+class CategoriesRecyclerAdapter(val categories : List<CategoryEntity>): RecyclerView.Adapter<CategoriesRecyclerAdapter.CategoriesViewHolder>()
+{
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
+        Log.d("!!!","Inside onCreateViewHolder Recycleradapter")
+       return CategoriesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.categories_list_view,parent,false))
+    }
+
+    override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
+       Log.d("!!!","Inside onBindViewHolder Recycler adapter")
+        Log.d("!!!","Description Category : ${categories[position].description}")
+       // holder.view.catListTextView.text = categories[position].description
+        when(holder)
+        {
+            is CategoriesViewHolder -> { holder.bind(categories[position]) }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        Log.d("!!!","Item size: ${categories.size}")
+        return categories.size
+    }
+
+    inner class CategoriesViewHolder(val view:View) : RecyclerView.ViewHolder(view)
+    {
+        val categoryImage = itemView.findViewById<ImageView>(R.id.categoryListImageView)
+        val categoryText = view.findViewById<TextView>(R.id.categoryListTextView)
+        //Displays the items in View
+        fun bind(categoryDisplay: CategoryEntity)
+        {
+            Log.d("!!!","Inside bind function inner class")
+            categoryText.setText(categoryDisplay.description)
+            Log.d("!!!","After setting text from Database in recycler Textview")
+            Log.d("!!!","Before Calling displayImage Function")
+           displayImageFromDrawable(categoryDisplay.description)
+
+        }
+        //Display Image from Drawable resource
+        fun displayImageFromDrawable(catImage:String)
+        {
+            Log.d("!!!","Inside displayImage function")
+            when(catImage)
+            {
+                "Fruits" -> categoryImage.setImageResource(R.drawable.fruits)
+                "Flowers" -> categoryImage.setImageResource(R.drawable.flowers)
+                "Vegetables" -> categoryImage.setImageResource(R.drawable.vegetables)
+            }
+        }
     }
 }

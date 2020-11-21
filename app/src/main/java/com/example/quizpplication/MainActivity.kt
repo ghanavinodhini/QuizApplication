@@ -7,35 +7,58 @@ import android.provider.ContactsContract
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import com.example.quizpplication.BaseCorotineJob.BaseCoroutineJob
+import com.example.quizpplication.roomDB.AppDatabase
+import com.example.quizpplication.roomDB.Player_Entity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseCoroutineJob() {
     //Create a  variable to hold playerName entered by user
     lateinit var nameEditText: EditText
+    private lateinit var db: AppDatabase
+     lateinit var playerName:String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.d("!!!","Code Runs")
+        db = AppDatabase.getInstance(this)
+
+        Log.d("!!!","After db getInstance")
+
         nameEditText = findViewById(R.id.editTexPersonName)
-                                                //Log.d("!!!","Code Runs")
 
         startButton.setOnClickListener {
-                                                //Log.d("!!!","Start Button pressed!")
+                                                Log.d("!!!","Start Button pressed!")
+            playerName = nameEditText.text.toString()
             //Check if value is entered in Text box
-            if(nameEditText.text.toString() != "")
+            if(playerName != "")
             {
-                DataManager.playerName = nameEditText.text.toString()
-                                                //Log.d("!!!","PlayerName: ${DataManager.playerName}")
-                startCategoriesActivity()
+                Log.d("!!!","PlayerName: ${playerName}")
+                Log.d("!!!", " calling insert inside Globalscope coroutine function")
+
+                //Coroutine Scope functions
+                launch {
+                    db.playerDao.deleteAllPlayer()
+                }
+                launch {
+                    val player = Player_Entity(playerName)
+
+                   // db.playerDao.deleteAllPlayer()
+                    db.playerDao.insertPlayer(player)
+
+                    Log.d("!!!","After inserting DAO Call")
+                    startCategoriesActivity()
+                }
             }
             else
             {
-                DataManager.playerName = ""
-                                                //Log.d("!!!", "No name entered")
-                                                //Log.d("!!!","PLayerName:${DataManager.playerName}")
+                playerName = ""
                 Toast.makeText(this,"Please Enter Your Name", Toast.LENGTH_LONG).show()
             }
         }
