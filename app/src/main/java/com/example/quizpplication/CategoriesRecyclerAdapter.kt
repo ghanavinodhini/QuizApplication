@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.quizpplication.roomDB.CategoryEntity
 import kotlinx.android.synthetic.main.categories_list_view.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlin.coroutines.coroutineContext
 
 //Adapter holds list of categories
 /*class CategoriesRecyclerAdapter(val context: Context, val categories : List<Category>): RecyclerView.Adapter<RecyclerView.ViewHolder>()
@@ -65,7 +67,7 @@ import kotlinx.android.synthetic.main.categories_list_view.view.*
     }
 }*/
 
-class CategoriesRecyclerAdapter(val categories : List<CategoryEntity>): RecyclerView.Adapter<CategoriesRecyclerAdapter.CategoriesViewHolder>()
+class CategoriesRecyclerAdapter(val categories : List<CategoryEntity>,val context: Context): RecyclerView.Adapter<CategoriesRecyclerAdapter.CategoriesViewHolder>()
 {
 
 
@@ -102,6 +104,17 @@ class CategoriesRecyclerAdapter(val categories : List<CategoryEntity>): Recycler
             Log.d("!!!","Before Calling displayImage Function")
            displayImageFromDrawable(categoryDisplay.description)
 
+        }
+        init
+        {
+            categoryImage.setOnClickListener {
+                val intent = Intent(context, QuizQuestionActivity::class.java)
+                //Pass textview value
+                intent.putExtra("categoryname",categoryText.text.toString())
+                context.startActivity(intent)
+                // to finish activity from RecyclerView Adapter
+                (context as CategoriesActivity).finish()
+            }
         }
         //Display Image from Drawable resource
         fun displayImageFromDrawable(catImage:String)

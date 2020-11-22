@@ -1,7 +1,7 @@
 package com.example.quizpplication
 
 //this class contains Questions data members
- class Question (val id:Int? = null,
+ /*class Question (val id:Int? = null,
                  val image_grayscale:Int?=null,
                  val image:Int? = null,
                  val optionOne:String? = null,
@@ -27,4 +27,4 @@ package com.example.quizpplication
         }
         return retQuestionList
     }
-}
+}*/

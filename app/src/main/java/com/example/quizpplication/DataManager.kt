@@ -1,5 +1,7 @@
 package com.example.quizpplication
 
+import com.example.quizpplication.roomDB.Question_Entity
+
 //Contains all data used in app
 object DataManager
 {
@@ -13,23 +15,25 @@ object DataManager
                 "Player can navigate back to Categories page from any question.\n"+
                 "Results page displays the score details.\n"+
                 "Player can restart or quit the quiz application from Results screen."
-    val categories = mutableListOf<Category>()
-    val questionsList = mutableListOf<Question>()
+    //val categories = mutableListOf<Category>()
+   // val questionsList = mutableListOf<Question>()
+    val allQuestionsList = mutableListOf<Question_Entity>()
 
     init
     {
-        createCategoryData()
-        createQuestionsData()
+      //  createCategoryData()
+       // createQuestionsData()
+        insertQuestionsData()
     }
 
-    private fun createCategoryData()
+   /* private fun createCategoryData()
     {
         categories.add(Category("Fruits",R.drawable.fruits))
         categories.add(Category("Flowers",R.drawable.flowers))
         categories.add(Category("Vegetables",R.drawable.vegetables))
-    }
+    }*/
 
-    private fun createQuestionsData()
+   /* private fun createQuestionsData()
     {
         val que1 = Question(1,
                             R.drawable.appleimage_grayscale,
@@ -205,5 +209,157 @@ object DataManager
         questionsList.add(que13)
         questionsList.add(que14)
         questionsList.add(que15)
+    }*/
+
+
+     fun insertQuestionsData()
+    {
+        val que1 = Question_Entity("Guess The Color Of This Fruit",
+            "Blue",
+            "Green",
+            "Red",
+            "Yellow",
+            3,
+            "Fruits")
+
+
+        val que2 = Question_Entity("Guess The Color Of This Fruit",
+            "Green",
+            "Red",
+            "Brown",
+            "Yellow",
+            4,
+            "Fruits")
+
+
+        val que3 = Question_Entity("Guess The Color Of This Fruit",
+            "Purple",
+            "Black",
+            "Orange",
+            "Yellow",
+            3,
+            "Fruits")
+
+
+        val que4 = Question_Entity("Guess The Color Of This Fruit",
+            "Green",
+            "Maroon",
+            "Brown",
+            "Pink",
+            3,
+            "Fruits")
+
+
+        val que5 = Question_Entity("Guess The Color Of This Fruit",
+            "Blue",
+            "White",
+            "Pink",
+            "Yellow",
+            3,
+            "Fruits")
+
+        allQuestionsList.add(que1)
+        allQuestionsList.add(que2)
+        allQuestionsList.add(que3)
+        allQuestionsList.add(que4)
+        allQuestionsList.add(que5)
+
+
+        val que6 = Question_Entity("Guess The Color Of This Flower",
+            "Blue",
+            "Green",
+            "Red",
+            "Yellow",
+            3,
+            "Flowers")
+
+        val que7 = Question_Entity("Guess The Color Of This Flower",
+            "Green",
+            "Red",
+            "Pink",
+            "Yellow",
+            3,
+            "Flowers")
+
+
+        val que8 = Question_Entity("Guess The Color Of This Flower",
+            "Purple",
+            "Black",
+            "Orange",
+            "Yellow",
+            4,
+            "Flowers")
+
+
+        val que9 = Question_Entity("Guess The Color Of This Flower",
+            "Purple",
+            "Maroon",
+            "Brown",
+            "Pink",
+            1,
+            "Flowers")
+
+
+        val que10 = Question_Entity("Guess The Color Of This Flower",
+            "Blue",
+            "White",
+            "Pink",
+            "Yellow",
+            2,
+            "Flowers")
+
+        allQuestionsList.add(que6)
+        allQuestionsList.add(que7)
+        allQuestionsList.add(que8)
+        allQuestionsList.add(que9)
+        allQuestionsList.add(que10)
+
+
+        val que11 = Question_Entity("Guess The Color Of This Vegetable",
+            "Blue",
+            "Green",
+            "Purple",
+            "Yellow",
+            3,
+            "Vegetables")
+
+        val que12 = Question_Entity("Guess The Color Of This Vegetable",
+            "Pink",
+            "Green",
+            "Red",
+            "Brown",
+            2,
+            "Vegetables")
+
+        val que13 = Question_Entity("Guess The Color Of This Vegetable",
+            "Black",
+            "Green",
+            "Red",
+            "Yellow",
+            4,
+            "Vegetables")
+
+        val que14 = Question_Entity("Guess The Color Of This Vegetable",
+            "Blue",
+            "Orange",
+            "Green",
+            "Yellow",
+            2,
+            "Vegetables")
+
+        val que15 = Question_Entity("Guess The Color Of This Vegetable",
+            "Red",
+            "Green",
+            "White",
+            "Blue",
+            3,
+            "Vegetables")
+
+        allQuestionsList.add(que11)
+        allQuestionsList.add(que12)
+        allQuestionsList.add(que13)
+        allQuestionsList.add(que14)
+        allQuestionsList.add(que15)
+
     }
 }

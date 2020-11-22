@@ -12,10 +12,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.quizpplication.BaseCorotineJob.BaseCoroutineJob
+import com.example.quizpplication.roomDB.AppDatabase
+import com.example.quizpplication.roomDB.Question_Entity
 import kotlinx.android.synthetic.main.activity_quiz_question.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
-class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
+/*class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
 {
     //Each time this Activity starts first time, we start with question 1
     private var myCurrentQuestion:Int = 1
@@ -304,6 +309,47 @@ class QuizQuestionActivity : AppCompatActivity(),View.OnClickListener
         val btnAnimation = AnimationUtils.loadAnimation(this, R.anim.blink)
         btn.startAnimation(btnAnimation)
     }
-}
+}*/
 
+class QuizQuestionActivity : BaseCoroutineJob()
+{
+    //Create variable to hold categorytext view value
+    private lateinit var categoryName:String
+    private lateinit var db: AppDatabase
+    private lateinit var qList:MutableList<Question_Entity>
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_quiz_question)
+
+        Log.d("!!!","Inside Quiz Question Activity")
+
+        //Get instance of Database
+        db = AppDatabase.getInstance(this)
+
+        //Insert Question Data
+        Log.d("!!!","Before calling Datamanger.InsertQuestion function inside launch scope")
+
+        qList = DataManager.allQuestionsList
+        Log.d("!!!","qList Size: ${qList.size}")
+        Log.d("!!!","QList value : $qList")
+
+        //Coroutine Scope functions
+        launch {
+            db.questionDao.deleteAllQuestions()
+        }
+
+        launch{
+            for(i in 0..qList.size-1) {
+                delay(1000)
+                db.questionDao.insertQuestion(qList[i])
+            }
+        }
+
+        //Retreive category textview value
+        categoryName = getIntent().getStringExtra("categoryname").toString()
+        Log.d("!!!", "Category value: $categoryName")
+    }
+}
 

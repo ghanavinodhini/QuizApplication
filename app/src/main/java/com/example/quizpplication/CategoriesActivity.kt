@@ -18,7 +18,9 @@ import com.example.quizpplication.roomDB.CategoryEntity
 import com.example.quizpplication.roomDB.Player_Entity
 import kotlinx.android.synthetic.main.activity_categories.*
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 /*class CategoriesActivity : AppCompatActivity()
 {
@@ -133,18 +135,19 @@ class CategoriesActivity : BaseCoroutineJob() {
         }
 
         Log.d("!!!","Before calling async coroutine")
-       val deferedType =  async {
+       val deferred =  async {
            // Log.d("!!!","Before calling getAllCategoriesDAO")
           //  val categoriesList = db.categoryDao.getAllCategories()
         //Log.d("!!!","After calling getAllCategoriesDAO")
            // Log.d("!!!","Categories List: $categoriesList")
+          delay(1000)
            val categoriesList = db.categoryDao.getAllCategories()
            Log.d("!!!","Categories List: $categoriesList")
-            recyclerView.adapter = CategoriesRecyclerAdapter(categoriesList)
+            recyclerView.adapter = CategoriesRecyclerAdapter(categoriesList,this@CategoriesActivity)
             Log.d("!!!","After the adapter calling line")
 
         }
-        Log.d("!!!","Deferred coroutine value : $deferedType")
+        Log.d("!!!","Deferred coroutine value : $deferred")
     }
 
     //Implement spacing between cards in recyclerview
