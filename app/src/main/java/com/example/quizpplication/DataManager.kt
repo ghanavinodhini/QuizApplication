@@ -5,7 +5,7 @@ import com.example.quizpplication.roomDB.Question_Entity
 //Contains all data used in app
 object DataManager
 {
-    lateinit var playerName:String
+   // lateinit var playerName:String
     const val helpMessage =
         "How to Play?\n" +
                 "Player chooses a Category.\n"+

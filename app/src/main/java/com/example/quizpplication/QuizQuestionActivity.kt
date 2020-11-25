@@ -413,6 +413,12 @@ class QuizQuestionActivity : BaseCoroutineJob(),View.OnClickListener
             displayNextQuestion(myCurrentQuestion)
         }
 
+        //Start Results Activity on doneAll button click
+        doneAll_floatButton.setOnClickListener{
+            //Log.d("!!!", "Done All button pressed!")
+            startResultsActivity()
+        }
+
         optionOneButton.setOnClickListener(this)
         optionTwoButton.setOnClickListener(this)
         optionThreeButton.setOnClickListener(this)
@@ -643,6 +649,23 @@ class QuizQuestionActivity : BaseCoroutineJob(),View.OnClickListener
     {
         timer.cancel()
         val intent = Intent(this, CategoriesActivity::class.java)
+        startActivity(intent)
+        //Finish Question Activity
+        finish()
+    }
+
+    private fun startResultsActivity()
+    {
+        val intent = Intent(this, ResultsActivity::class.java)
+
+        //Pass data to Results Activity
+        intent.putExtra("scoreValue", score)
+        intent.putExtra("noOfQuestions", myQListByCategory.size)
+        intent.putExtra("correctAnswered", correctAnswered)
+        intent.putExtra("wrongAnswered", wrongAnswered)
+        intent.putExtra("skipped", skippedQuestions)
+
+        //Start Results activity
         startActivity(intent)
         //Finish Question Activity
         finish()

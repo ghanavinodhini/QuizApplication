@@ -7,10 +7,16 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.quizpplication.BaseCorotineJob.BaseCoroutineJob
+import com.example.quizpplication.roomDB.AppDatabase
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import kotlinx.android.synthetic.main.activity_results.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class ResultsActivity : AppCompatActivity() {
+class ResultsActivity : BaseCoroutineJob() {
 
     lateinit var scoreTextView: TextView
     lateinit var totalQuestionsTextView: TextView
@@ -20,11 +26,26 @@ class ResultsActivity : AppCompatActivity() {
     lateinit var playerNameTextView: TextView
     //Create a variable to hold count for back button press
     var navBackCount = 0
+    private lateinit var db: AppDatabase
+    lateinit var playerName:String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
+
+        Log.d("!!!","Inside Results Activity")
+        //Get instance of Database
+        db = AppDatabase.getInstance(this)
+        Log.d("!!!","After getting DB instance")
+
+        runBlocking {
+            launch {
+                Log.d("!!!", "Inside launch scope")
+                //delay(1000)
+                playerName = db.playerDao.getPlayer()
+            }
+        }
 
                                         //Log.d("!!!","In Results Activity")
         scoreTextView = findViewById(R.id.score_textView)
@@ -39,7 +60,7 @@ class ResultsActivity : AppCompatActivity() {
         val wrongAnswers = getIntent().getIntExtra("wrongAnswered",0)
         val skipQuestions = getIntent().getIntExtra("skipped",0)
         val totalQuestions = getIntent().getIntExtra("noOfQuestions",0)
-        val playerName = DataManager.playerName
+       // val playerName = DataManager.playerName
                                         //Log.d("!!!","Score value: $score")
         //Pass values to strings.xml file
         scoreTextView.text = getString(R.string.score_textview,score.toString())
