@@ -443,6 +443,11 @@ class QuizQuestionActivity : BaseCoroutineJob(),View.OnClickListener
         //Display grayscale image for current question
         //currentQuestionDisplay.image_grayscale?.let { qv_imageView.setImageResource(it) }
 
+        val imgSource = currentQuestionDisplay.imgName.toLowerCase() + "image_grayscale"
+        Log.d("!!!","Image Sorce Grayscale: imgSource")
+        val resID = resources.getIdentifier(imgSource,"drawable",packageName)
+        qv_imageView.setImageResource(resID)
+
         //Display text in all option buttons
         optionOneButton.text = currentQuestionDisplay.optionOne
         optionTwoButton.text = currentQuestionDisplay.optionTwo
@@ -501,6 +506,11 @@ class QuizQuestionActivity : BaseCoroutineJob(),View.OnClickListener
             answerDisplay(myQListByCategory.get(myCurrentQuestion - 1).correctAnswer)
             //Display original image for current question
            // myQListByCategory.get(myCurrentQuestion - 1).image?.let { qv_imageView.setImageResource(it) }
+            val imgSource = myQListByCategory.get(myCurrentQuestion-1).imgName.toLowerCase() + "image"
+            Log.d("!!!","Original Image Source: $imgSource")
+            val resID = resources.getIdentifier(imgSource,"drawable",packageName)
+            qv_imageView.setImageResource(resID)
+
             //Increment skipped Questions
             skippedQuestions+=1
             //Log.d("!!!", "Skipped: $skippedQuestions")
@@ -566,6 +576,12 @@ class QuizQuestionActivity : BaseCoroutineJob(),View.OnClickListener
     //Validate user selected option
     private fun selectedOptionValidate(selectedBtn: Button, selectedOptionNumber: Int) {
         val currentQuestionValidate = myQListByCategory!!.get(myCurrentQuestion - 1)
+
+        //Display original Image
+        val imgSource = currentQuestionValidate.imgName.toLowerCase() + "image"
+        Log.d("!!!","Original Image Source: $imgSource")
+        val resID = resources.getIdentifier(imgSource,"drawable",packageName)
+        qv_imageView.setImageResource(resID)
 
         //Set all other options default
         defaultOptionsView()

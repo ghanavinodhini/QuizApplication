@@ -9,6 +9,9 @@ data class Question_Entity (
     @ColumnInfo(name = "Question")
     val question:String,
 
+    @ColumnInfo(name = "image_name")
+    val imgName:String,
+
     @ColumnInfo(name = "Option_One")
     val optionOne:String? = null,
 

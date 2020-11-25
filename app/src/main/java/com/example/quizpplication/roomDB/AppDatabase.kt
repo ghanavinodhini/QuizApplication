@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 
 
 //This class contains Database for Questions
-@Database(entities = [Question_Entity::class, CategoryEntity::class, Player_Entity::class],version = 1,exportSchema = false)
+@Database(entities = [Question_Entity::class, CategoryEntity::class, Player_Entity::class],version = 2,exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val questionDao: QuestionDAO
