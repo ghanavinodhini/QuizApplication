@@ -1,9 +1,9 @@
 package com.example.quizpplication
 
-//this class contains Questions data members
- /*class Question (val id:Int? = null,
-                 val image_grayscale:Int?=null,
-                 val image:Int? = null,
+/*this class contains Questions data members
+ class Question (val ques:String? = null,
+                // val image_grayscale:Int?=null,
+                // val image:Int? = null,
                  val optionOne:String? = null,
                  val optionTwo:String? = null,
                  val optionThree:String? = null,
@@ -13,7 +13,7 @@ package com.example.quizpplication
 
 {
     //this function returns questions list based on category type
-    fun getQuestions(categoryName:String) : MutableList<Question>
+  fun getQuestions(categoryName:String) : MutableList<Question>
     {
         val retQuestionList = mutableListOf<Question>()
         val qList = DataManager.questionsList

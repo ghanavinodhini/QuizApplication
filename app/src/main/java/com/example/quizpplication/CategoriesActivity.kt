@@ -129,6 +129,7 @@ class CategoriesActivity : BaseCoroutineJob() {
             db.categoryDao.deleteAllCategories()
         }
         launch {
+            //delay(500)
             db.categoryDao.insertCategory(cat1, cat2, cat3)
             Log.d("!!!", "After insertCategory DAO Call")
 
@@ -136,10 +137,6 @@ class CategoriesActivity : BaseCoroutineJob() {
 
         Log.d("!!!","Before calling async coroutine")
        val deferred =  async {
-           // Log.d("!!!","Before calling getAllCategoriesDAO")
-          //  val categoriesList = db.categoryDao.getAllCategories()
-        //Log.d("!!!","After calling getAllCategoriesDAO")
-           // Log.d("!!!","Categories List: $categoriesList")
           delay(1000)
            val categoriesList = db.categoryDao.getAllCategories()
            Log.d("!!!","Categories List: $categoriesList")
